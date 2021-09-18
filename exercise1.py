@@ -5,5 +5,14 @@ MSU NetID: veterejo
 
 This files prints "Hello World", contains two code blocks and comments.
 '''
+
+# Joe Vetere lab 1 exercise 1
+
 myStr = "Hello World"
 print(myStr)
+
+#%% This is one code cell in the file
+print("Hello World 2")
+
+#%% This is another code cell in the file
+print("Hello World 3")
