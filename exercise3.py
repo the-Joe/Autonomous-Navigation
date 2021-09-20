@@ -21,10 +21,11 @@ MIN_TEMP = 0.18
 
 heaterPublisher = rospy.Publisher("/heater", std_msgs.String)
 thermostatPublisher = rospy.Publisher("/thermostat", std_msgs.Int64)
-temp_readings = []
-time_readings = []
-starttime = time.time()
-#print the data provided
+temp_readings = [] #List to hold temp data collected
+time_readings = [] #List to hold data collection time in seconds
+starttime = time.time() # variable to hold initial time so time_readings are relative to execution of script and not the epoch.
+
+
 #for ROS functions, you always need the data parameter
 def my_function(data):
 	if (data <= MIN_TEMP):
@@ -65,8 +66,9 @@ y = [temp_readings]
 x = [time_readings]
 
 
-print(temp_readings)
-print(time_readings)
+#print(temp_readings) #Validating temp_readings list was populated with data
+#print(time_readings) #Validating time_readbings list was populated with data
 plt.plot(time_readings,temp_readings)
-plt.show() #calling this will show the plot in the output
+plt.savefig("plot.png")
+#plt.show() #calling this will show the plot in the output
 plt.savefig("plot.png")
