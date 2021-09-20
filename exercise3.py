@@ -20,7 +20,9 @@ MAX_TEMP = 0.22
 MIN_TEMP = 0.18
 
 heaterPublisher = rospy.Publisher("/heater", std_msgs.String)
-
+thermostatPublisher = rospy.Publisher("/thermostat", std_msgs.Int64)
+temp_readings = []
+time_readings = []
 #print the data provided
 #for ROS functions, you always need the data parameter
 def my_function(data):
@@ -29,10 +31,15 @@ def my_function(data):
 	else:
 		heaterPublisher.publish("off")
 	print(data)
+	temp_readings.append(data)
+	time_readings.append(time.time())
 
 thermostatSub = rospy.Subscriber("/thermostat", std_msgs.Int64, my_function)
 
-time.sleep(10)
+starttime = time.time()
+time.sleep(5)
+endtime = time.time()
+
 
 thermostatSub.unregister() #this unregisters the ROS node from reading data. If not called , will continue to run the name plt
 
@@ -44,12 +51,22 @@ plt.xlabel("Time") #sets the x-axis label
 plt.ylabel("Temperature") #sets the y-axis label
 plt.title("Temperature vs. Time") #sets the title
 
-#this draw a horizontal line on the graph #to show a threshold value plt.axhline(y=0.1, color=’r’, linestyle=’-’) plt.axhline(y=0.5, color=’r’, linestyle=’-’)
-#this is temp data to be plotted
-data_to_be_plotted = [
-0.5,0.45,0.2,0.3,0.6
-]
+#this draws a horizontal line on the graph 
+#to show a threshold value 
+plt.axhline(y=0.1, color="r", linestyle="-")
+plt.axhline(y=0.5, color="r", linestyle="-")
 
-#plt.plot(x,y)
-plt.plot(list(range(0,len(data_to_be_plotted))),data_to_be_plotted)
-plt.show() #calling this will show the plot in the output
+#this is temp data to be plotted
+#data_to_be_plotted = [thermostatSubList
+#0.5,0.45,0.2,0.3,0.6
+#]
+
+y = [temp_readings]
+x = [time_readings]
+
+plt.plot(x,y)
+#plt.plot(list(range(0,len(data_to_be_plotted))),data_to_be_plotted)
+#plt.show() #calling this will show the plot in the output
+print(temp_readings)
+print(time_readings)
+plt.savefig("plot.png")
