@@ -4,8 +4,8 @@ Student Name: Joe Vetere
 MSU NetID: veterejo
 
 This file will use ROS to receive sensor data from the robot 
-and Python to parse and control the stationary robot in  order for it 
-to follow the Sphero Mini.
+and Python to parse and control the stationary robot in order for it 
+to follow the leader robot.
 '''
 
 from ros_shim import rospy
@@ -15,13 +15,15 @@ import time #not ROS, but will be used later
 #global variables
 global leaderPos #hold position of the leader
 global followerPos #hold position of the follower
+global starttime
+global endtime
+global elapsedtime
 
 #time variables
 starttime = time.time()
 endtime = 0
-elapsedtime = endtime - starttime
 
-nodeName = "Lab 2 Node" #can be any string
+nodeName = "Lab 2: Exercise 1" #can be any string
 rospy.init_node(nodeName)
 
 # a function to view the current published topics
@@ -47,10 +49,12 @@ def leader_odom(data):
 
 # will return the x and y velocities to get to the (x2, y2) point from (x1, y1)
 def determine_velocity_to_travel(x1, x2, y1, y2): 
-	xVel = 0
-	yVel = 0
+	global starttime
+	global endtime
+	global elapsedtime
 
 	#enter your code to calculate the velocity of the robot here 
+	endtime = time.time()
 	xVel = (x2 - x1)/elapsedtime
 	yVel = (y2 - y1)/elapsedtime
 
@@ -60,27 +64,27 @@ def determine_velocity_to_travel(x1, x2, y1, y2):
 #updated follower function
 def follower_odom(data): 
 	global followerPos
-	global leaderPos 
+	global leaderPos
+	global starttime
+	global endtime
+	global elapsedtime
 	followerPos = data
 	leaderPos = data
 
 	#initialize the velocities
-	xVel = 10 
-	yVel = 10
+	xVel = 1 
+	yVel = 1
 
 	followerX = followerPos["pose"]["position"]["x"] #gets X-coord of follower 
 	leaderX = leaderPos["pose"]["position"]["x"] #gets X-coord of leader 
 	followerY = followerPos["pose"]["position"]["y"] #gets Y-coord of follower 
 	leaderY = leaderPos["pose"]["position"]["y"] #gets Y-coord of leader
 
-
+	elapsedtime = endtime - starttime
+	print(elapsedtime)
 	#call your function
-	xVel, yVel = determine_velocity_to_travel( 
-		followerX ,
-		leaderX , 
-		followerY , 
-		leaderY
-		)
+	xVel, yVel = determine_velocity_to_travel(followerX, leaderX, followerY, leaderY)
+	print(xVel)
 
 	#publish the calculated velocity to the robot
 	changeVelocity.publish({ 
@@ -91,13 +95,15 @@ def follower_odom(data):
 
 	}})
 
+	return (xVel, yVel) #returns both velocities
+
 #attach these function to the ROS subscribers
 #the syntax and meaning of these lines are further covered in the next lab 
 rospy.Subscriber("/follower/odom", nav_msgs.Odometry , follower_odom) 
 rospy.Subscriber("/leader/odom", nav_msgs.Odometry , leader_odom)
 
 
-endtime = time.time()
+
 time.sleep(5)
 
 
