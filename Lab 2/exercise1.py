@@ -43,8 +43,8 @@ print(view_topics())
 #publisher variable
 changeVelocity = rospy.Publisher("/cmd_vel", geometry_msgs.Twist)
 
-#print the data provided
-#for ROS functions, you always need the data parameter
+delta_distance = [] #List to hold delta distance data collected between the robots
+time_readings = [] #List to hold data collection time in seconds
 
 #leader function odometry
 def leader_odom(data): 
@@ -65,11 +65,28 @@ def determine_velocity_to_travel(x1, x2, y1, y2):
 
 	#enter your code to calculate the velocity of the robot here 
 	endtime = time.time()
+	
+
 	xVel = (x2 - x1)/elapsedtime
 	yVel = (y2 - y1)/elapsedtime
 
-	return (xVel, yVel) #returns both velocities
+	if xVel == 0 and followerX < 500:
+		xVel = abs(leaderX - followerX)/elapsedtime
+	elif followerX == 500:
+		xVel = -abs(leaderX - followerX)/elapsedtime
+	else:
+		print("I'm already on my way on the X-Axis! My linear speed is " + str(abs(xVel)) + " m/s")
+		delta_distance.append(abs(leaderX - followerX))
+		time_readings.append(time.time() - starttime)
 
+	if yVel == 0 and followerY < 750:
+		yVel = abs(leaderY - followerY)/elapsedtime
+	elif followerX == 750:
+		xVel = -abs(leaderY - followerY)/elapsedtime
+	else:
+		print("I'm already on my way on the Y-Axis! My linear speed is " + str(abs(xVel)) + " m/s")
+
+	return (xVel, yVel) #returns both velocities
 
 #updated follower function
 def follower_odom(data): 
@@ -83,7 +100,6 @@ def follower_odom(data):
 	global leaderY
 	global followerY
 	followerPos = data
-	leaderPos = data
 
 	#initialize the velocities
 	xVel = 1 
@@ -95,12 +111,10 @@ def follower_odom(data):
 	leaderY = leaderPos["pose"]["position"]["y"] #gets Y-coord of leader
 
 	elapsedtime = endtime - starttime
-	print(elapsedtime)
-	print(followerY)
-	print(xVel)
+
 	#call your function
 	xVel, yVel = determine_velocity_to_travel(followerX, leaderX, followerY, leaderY)
-	print(xVel)
+	
 
 	#publish the calculated velocity to the robot
 	changeVelocity.publish({ 
@@ -120,6 +134,20 @@ rospy.Subscriber("/leader/odom", nav_msgs.Odometry , leader_odom)
 
 
 
-time.sleep(5)
+time.sleep(10)
 
+import math
+import matplotlib.pyplot as plt
 
+plt.xlabel("Time") #sets the x-axis label
+plt.ylabel("Distance") #sets the y-axis label
+plt.title("Distance Over Time Between Follower & Leader") #sets the title
+
+y = [delta_distance]
+x = [time_readings]
+
+#This plot tracks distance over time between the follower and the leader over the X-Axis of the simulation field
+plt.plot(time_readings, delta_distance) #plt.plot(x,y) 
+#plt.show() #calling this will show the plot in the output
+
+plt.savefig("plot.png")
