@@ -1,0 +1,5 @@
+[1002/105326:ERROR:process_info.cc(372)] NtQuerySystemInformation SystemExtendedHandleInformation: <failed to retrieve error message (0x13d)> (0xc0000003)
+[1002/135129:ERROR:process_info.cc(372)] NtQuerySystemInformation SystemExtendedHandleInformation: <failed to retrieve error message (0x13d)> (0xc0000003)
+[1002/164600:ERROR:process_info.cc(372)] NtQuerySystemInformation SystemExtendedHandleInformation: <failed to retrieve error message (0x13d)> (0xc0000003)
+[1002/165011:ERROR:process_info.cc(372)] NtQuerySystemInformation SystemExtendedHandleInformation: <failed to retrieve error message (0x13d)> (0xc0000003)
+[1002/165133:ERROR:process_info.cc(372)] NtQuerySystemInformation SystemExtendedHandleInformation: <failed to retrieve error message (0x13d)> (0xc0000003)

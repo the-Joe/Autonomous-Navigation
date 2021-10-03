@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2 Exercise 1 Simulation</title>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="matter.min.js"></script>
+        <script src="simulation.js"></script>
+
+        <script src="main.js"></script>
+        <link rel="stylesheet" media="all" href="main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body style="-webkit-app-region: drag">  
+        <img id="robotRed" width="283" height="310" src="robot.png" style="display:none;">
+        <img id="robotBlue" width="283" height="310" src="robotOpposite.png" style="display:none;">
+        <img id="ballImg"  src="ball.png" style="display:none;">
+
+        <div class="container">
+            <div id="navBar">
+                <button class="button is-small" id="restart">Restart</button>
+                <button class="button is-small" id="mouse">Enable Mouse</button>
+                <button class="button is-small" id="close">Exit</button>
+            </div>
+            <div id="simAreaWrapper">
+                <canvas id="simArea" width="750" height="500"></canvas>
+                <canvas id="matter"></canvas>
+            </div>
+        </div>  
+    </body>
+</html>
