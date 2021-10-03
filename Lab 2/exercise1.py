@@ -18,6 +18,10 @@ global followerPos #hold position of the follower
 global starttime
 global endtime
 global elapsedtime
+global leaderX
+global followerX
+global leaderY
+global followerY
 
 #time variables
 starttime = time.time()
@@ -49,9 +53,15 @@ def leader_odom(data):
 
 # will return the x and y velocities to get to the (x2, y2) point from (x1, y1)
 def determine_velocity_to_travel(x1, x2, y1, y2): 
+	global followerPos
+	global leaderPos
 	global starttime
 	global endtime
 	global elapsedtime
+	global leaderX
+	global followerX
+	global leaderY
+	global followerY
 
 	#enter your code to calculate the velocity of the robot here 
 	endtime = time.time()
@@ -68,6 +78,10 @@ def follower_odom(data):
 	global starttime
 	global endtime
 	global elapsedtime
+	global leaderX
+	global followerX
+	global leaderY
+	global followerY
 	followerPos = data
 	leaderPos = data
 
@@ -82,6 +96,8 @@ def follower_odom(data):
 
 	elapsedtime = endtime - starttime
 	print(elapsedtime)
+	print(followerY)
+	print(xVel)
 	#call your function
 	xVel, yVel = determine_velocity_to_travel(followerX, leaderX, followerY, leaderY)
 	print(xVel)
