@@ -18,8 +18,8 @@ global downState #Global variable for capturing the down state of the system
 nodeName = "Lab 2: Exercise 2"
 rospy.init_node(nodeName)
 
-c = 100
-M = 100
+c = 0
+M = 100 #Maximum occupancy for vehicles in the garage.
 
 
 #publisher variable
@@ -55,4 +55,4 @@ rospy.Subscriber("/up", std_msgs.Bool , upStateGarage) #Indicates presence of ca
 rospy.Subscriber("/down", std_msgs.Bool , downStateGarage) #Indicates presence of car in the down position (for subrtaction to count)
 #rospy.Subscriber("/count", std_msgs.Int64 , garageCounter) #Current count
 
-time.sleep(100)
+time.sleep(10)
