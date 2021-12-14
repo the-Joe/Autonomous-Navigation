@@ -1,0 +1,4223 @@
+Help on module robomaster.action in robomaster:
+
+NAME
+    robomaster.action
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Action
+        ActionDispatcher
+    
+    class Action(builtins.object)
+     |  Action(**kw)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, **kw)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  encode(self)
+     |  
+     |  found_action(self, proto)
+     |  
+     |  found_proto(self, proto)
+     |  
+     |  make_action_key(self)
+     |  
+     |  wait_for_completed(self, timeout=None)
+     |      \u7b49\u5f85\u4efb\u52a1\u52a8\u4f5c\u76f4\u5230\u5b8c\u6210
+     |      
+     |      :param timeout: \u8d85\u65f6\uff0c\u5728timeout\u524d\u672a\u5b8c\u6210\u4efb\u52a1\u52a8\u4f5c\uff0c\u76f4\u63a5\u8fd4\u56de
+     |      :return: bool: \u52a8\u4f5c\u5728\u6307\u5b9a\u65f6\u95f4\u5185\u5b8c\u6210\uff0c\u8fd4\u56deTrue; \u52a8\u4f5c\u8d85\u65f6\u8fd4\u56deFalse
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  failure_reason
+     |      \u83b7\u53d6\u6267\u884c\u5931\u8d25\u539f\u56e0
+     |  
+     |  has_failed
+     |      \u662f\u5426\u5df2\u7ecf\u6267\u884c\u5931\u8d25
+     |  
+     |  has_succeeded
+     |      \u662f\u5426\u5df2\u7ecf\u6210\u529f\u5b8c\u6210
+     |  
+     |  is_completed
+     |  
+     |  is_running
+     |      \u662f\u5426\u6b63\u5728\u8fd0\u884c\u4e2d\u3002
+     |  
+     |  state
+     |      \u8fd4\u56de\u5f53\u524d\u4efb\u52a1\u52a8\u4f5c\u72b6\u6001\u3002
+     |  
+     |  target
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class ActionDispatcher(builtins.object)
+     |  ActionDispatcher(client=None)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, client=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  get_msg_by_action(self, action)
+     |  
+     |  initialize(self)
+     |  
+     |  send_action(self, action, action_type='action_now')
+     |      \u53d1\u9001\u4efb\u52a1\u52a8\u4f5c\u547d\u4ee4
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  has_in_progress_actions
+     |      \u662f\u5426\u6709\u6b63\u5728\u6267\u884c\u7684\u4efb\u52a1
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    ACTION_ABORTED = 'action_aborted'
+    ACTION_EXCEPTION = 'action_exception'
+    ACTION_FAILED = 'action_failed'
+    ACTION_IDLE = 'action_idle'
+    ACTION_REJECTED = 'action_rejected'
+    ACTION_RUNNING = 'action_running'
+    ACTION_STARTED = 'action_started'
+    ACTION_SUCCEEDED = 'action_succeeded'
+    __all__ = ['Action', 'ActionDispatcher', 'ACTION_IDLE', 'ACTION_RUNNIN...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\action.py
+
+
+None
+Help on module robomaster.algo in robomaster:
+
+NAME
+    robomaster.algo
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+FUNCTIONS
+    crc16_calc(data)
+    
+    crc8_calc(data)
+    
+    simple_encrypt(data)
+
+DATA
+    crc16_table = [0, 4489, 8978, 12955, 17956, 22445, 25910, 29887, 35912...
+    crc8_table = [0, 94, 188, 226, 97, 63, 221, 131, 194, 156, 126, 32, 16...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\algo.py
+
+
+None
+Help on module robomaster.armor in robomaster:
+
+NAME
+    robomaster.armor
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Armor
+    
+    class Armor(robomaster.module.Module)
+     |  Armor(robot)
+     |  
+     |  Method resolution order:
+     |      Armor
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  set_hit_sensitivity(self, comp='all', sensitivity=5)
+     |      \u8bbe\u7f6e\u88c5\u7532\u7075\u654f\u5ea6
+     |      
+     |      :param comp: enum:("all", "top_all", "bottom_all", "top_left", "top_right", "bottom_left",         "bottom_right", "bottom_front", "bottom_back")\uff1a\u8981\u8bbe\u7f6e\u7684\u88c5\u7532\u90e8\u4f4d
+     |      :param sensitivity: int:[0, 10] \u7075\u654f\u5ea6\u7cfb\u6570\uff0c\u7cfb\u6570\u8d8a\u5927\u7075\u654f\u5ea6\u8d8a\u4f4e
+     |      :return: bool:\u8fd4\u56de\u8c03\u7528\u7ed3\u679c
+     |  
+     |  sub_hit_event(self, callback=None, *args, **kw)
+     |      \u6253\u51fb\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :param callback: \u56de\u8c03\u51fd\u6570, \u8fd4\u56de\u6570\u636e (armor_id, hit_type)\uff1a
+     |      
+     |              :param armor_id: int:[1, 6]\u6253\u51fb\u88c5\u7532\u7684\u7f16\u53f7\uff0c1 \u5e95\u76d8\u540e\uff1b2 \u5e95\u76d8\u524d\uff1b3 \u5e95\u76d8\u5de6\uff1b4 \u5e95\u76d8\u53f3\uff1b5 \u4e91\u53f0\u5de6\uff1b6 \u4e91\u53f0\u53f3
+     |              :param hit_type: enum:("water", "ir")\uff0c\u88ab\u6253\u51fb\u7c7b\u578b\uff0cwater:\u6c34\u5f39\uff0cir:\u7ea2\u5916
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u4e8b\u4ef6\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_ir_event(self, callback=None, *args, **kw)
+     |      \u7ea2\u5916\u6253\u51fb\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :param callback: \u56de\u8c03\u51fd\u6570, \u8fd4\u56de\u6570\u636e (hit_cnt)
+     |      :param hit_cnt: \u53d7\u5230\u7ea2\u5916\u51fb\u6253\u7684\u6b21\u6570
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u4e8b\u4ef6\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_hit_event(self)
+     |      \u53d6\u6d88\u6253\u51fb\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :return: bool: \u53d6\u6d88\u4e8b\u4ef6\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_ir_event(self)
+     |      \u53d6\u6d88\u7ea2\u5916\u6253\u51fb\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :return: bool: \u53d6\u6d88\u4e8b\u4ef6\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods defined here:
+     |  
+     |  comp2id(comp)
+     |      \u88c5\u7532\u90e8\u4f4d\u8f6c\u6362\u4e3a\u88c5\u7532ID
+     |      
+     |      :param comp: enum ("bottom_back", "bottom_front", "bottom_left", "bottom_right", "top_left", "top_right") \u88c5\u7532\u90e8\u4f4d
+     |      :return: int: [1, 6] \u88c5\u7532ID
+     |  
+     |  id2comp(armor_id)
+     |      \u88c5\u7532ID\u8f6c\u6362\u4e3a\u88c5\u7532\u90e8\u4f4d
+     |      
+     |      :param armor_id: int [1, 6]\uff0c\u88c5\u7532ID
+     |      :return comp: enum: ("bottom_back", "bottom_front", "bottom_left", "bottom_right", "top_left", "top_right")\uff0c        \u88c5\u7532\u90e8\u4f4d
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Armor']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\armor.py
+
+
+None
+Help on module robomaster.battery in robomaster:
+
+NAME
+    robomaster.battery
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        TelloBattery
+    robomaster.module.Module(builtins.object)
+        Battery
+    
+    class Battery(robomaster.module.Module)
+     |  Battery(robot)
+     |  
+     |  EP \u7535\u6c60\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Battery
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  sub_battery_info(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u7535\u6c60\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1,5,10,20,50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e percent:
+     |      
+     |                      :percent: \u7535\u6c60\u7535\u91cf\u767e\u5206\u6bd4
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_battery_info(self)
+     |      \u53d6\u6d88\u7535\u6c60\u8ba2\u9605
+     |      
+     |      :return: bool: \u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class TelloBattery(builtins.object)
+     |  TelloBattery(robot)
+     |  
+     |  \u6559\u80b2\u65e0\u4eba\u673a \u7535\u6c60\u6a21\u5757
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  get_battery(self)
+     |      \u83b7\u53d6\u7535\u6c60\u7535\u91cf\u4fe1\u606f
+     |      
+     |      :return: int: \u7535\u6c60\u7684\u5269\u4f59\u7535\u91cf\u767e\u5206\u6bd4
+     |  
+     |  sub_battery_info(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u7535\u6c60\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1,5,10) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e percent:
+     |      
+     |                      :percent: \u7535\u6c60\u7535\u91cf\u767e\u5206\u6bd4
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_battery_info(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u98de\u673a\u7535\u6c60\u4fe1\u606f
+     |      
+     |      :return: \u8fd4\u56de\u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Battery', 'TelloBattery']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\battery.py
+
+
+None
+Help on module robomaster.blaster in robomaster:
+
+NAME
+    robomaster.blaster
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Blaster
+    
+    class Blaster(robomaster.module.Module)
+     |  Blaster(robot)
+     |  
+     |  EP \u53d1\u5c04\u5668\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Blaster
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  fire(self, fire_type='water', times=1)
+     |      \u53d1\u5c04\u5668\u53d1\u5c04
+     |      
+     |      :param fire_type: enum: ("water", "ir")\uff0c \u53d1\u5c04\u5668\u53d1\u5c04\u7c7b\u578b\uff0c\u6c34\u5f39\u3001\u7ea2\u5916\u5f39
+     |      :param times: \u53d1\u5c04\u6b21\u6570
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  set_led(self, brightness=255, effect='on')
+     |      \u8bbe\u7f6e\u53d1\u5c04\u5668\u706f\u6548
+     |      
+     |      :param brightness: int:[0,255]\uff0c\u4eae\u5ea6
+     |      :param effect: enum:("on", "off")\uff0con \u8868\u793a\u5e38\u4eae\uff0coff \u8868\u793a\u5e38\u706d
+     |      :return: bool:\u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    INFRARED_FIRE = 'ir'
+    LED_OFF = 'off'
+    LED_ON = 'on'
+    WATER_FIRE = 'water'
+    __all__ = ['Blaster', 'WATER_FIRE', 'INFRARED_FIRE', 'LED_ON', 'LED_OF...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\blaster.py
+
+
+None
+Help on module robomaster.camera in robomaster:
+
+NAME
+    robomaster.camera
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Camera
+            EPCamera(robomaster.module.Module, Camera)
+            TelloCamera
+    robomaster.module.Module(builtins.object)
+        EPCamera(robomaster.module.Module, Camera)
+    
+    class Camera(builtins.object)
+     |  Camera(robot)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  read_cv2_image(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u53c2\u6570\uff0c\u5728timeout\u65f6\u95f4\u5185\u672a\u83b7\u53d6\u5230\u89c6\u9891\u6d41\u5e27\uff0c\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest")\uff0c\u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u4f9d\u6b21\u8bfb\u53d6\u7f13\u5b58\u7684\u5e27\u4fe1\u606f\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27        \u6570\u636e\uff0c\u4f1a\u6e05\u7a7a\u65e7\u7684\u6570\u636e\u5e27
+     |      :return: image
+     |  
+     |  read_video_frame(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u65f6\u95f4\uff0c\u8d85\u8fc7\u6307\u5b9atimeout\u65f6\u95f4\u540e\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest") \u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u6d41\u6c34\u7ebf\u4f9d\u6b21\u8bfb\u53d6\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27\u6570\u636e\uff0c        \u6ce8\u610f\u4f1a\u6e05\u7a7a\u8001\u7684\u6570\u636e\u5e27\u961f\u5217
+     |      :return: frame, \u5df2\u89e3\u7801\u7684\u89c6\u9891\u6d41\u5e27\u5b57\u8282\u6d41
+     |  
+     |  start_video_stream(self, display=True)
+     |  
+     |  stop_video_stream(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class EPCamera(robomaster.module.Module, Camera)
+     |  EPCamera(robot)
+     |  
+     |  EP \u6444\u50cf\u673a\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      EPCamera
+     |      robomaster.module.Module
+     |      Camera
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  read_audio_frame(self, timeout=1)
+     |      \u8bfb\u53d6\u4e00\u6bb5\u97f3\u9891\u6d41\u4fe1\u606f
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u65f6\u95f4\uff0c\u8d85\u8fc7\u6307\u5b9atimeout\u65f6\u95f4\u540e\u51fd\u6570\u8fd4\u56de
+     |      :return: data, \u5df2\u89e3\u7801\u7684\u97f3\u9891\u6d41\u5e27\u5b57\u8282\u6d41
+     |  
+     |  record_audio(self, save_file='output.wav', seconds=5, sample_rate=48000)
+     |      \u5f55\u5236\u97f3\u9891\uff0c\u4fdd\u5b58\u5230\u672c\u5730\uff0c\u652f\u6301wav\u683c\u5f0f\uff0c\u5355\u901a\u9053
+     |      
+     |      :param save_file: \u672c\u5730\u6587\u4ef6\u8def\u5f84\uff0c\u76ee\u524d\u4ec5\u652f\u6301wav\u683c\u5f0f
+     |      :param seconds: \u5f55\u5236\u65f6\u95f4
+     |      :param sample_rate: \u91c7\u6837\u7387
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  start_audio_stream(self)
+     |      \u5f00\u542f\u97f3\u9891\u6d41
+     |  
+     |  start_video_stream(self, display=True, resolution='720p')
+     |      \u5f00\u542f\u89c6\u9891\u6d41
+     |      
+     |      :param display: bool\uff0c\u662f\u5426\u663e\u793a\u89c6\u9891\u6d41
+     |      :param resolution: enum: ("360p", "540p", "720p")\uff0c\u8bbe\u7f6e\u56fe\u4f20\u5206\u8fa8\u7387\u5c3a\u5bf8
+     |      :return: bool\uff1a\u8c03\u7528\u7ed3\u679c
+     |  
+     |  stop(self)
+     |      \u505c\u6b62
+     |  
+     |  stop_audio_stream(self)
+     |      \u505c\u6b62\u97f3\u9891\u6d41
+     |      
+     |      :return\uff1abool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  stop_video_stream(self)
+     |      \u505c\u6b62\u89c6\u9891\u6d41
+     |      
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  take_photo(self)
+     |      \u62cd\u7167
+     |      
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  audio_stream_addr
+     |      \u673a\u5668\u4eba\u97f3\u9891\u6d41\u5730\u5740
+     |      
+     |      :return: tuple:(ip, port)\uff0c\u673a\u5668\u4eba\u97f3\u9891\u6d41\u5730\u5740
+     |  
+     |  conf
+     |      \u76f8\u673a\u53c2\u6570\u914d\u7f6e
+     |  
+     |  video_stream_addr
+     |      \u673a\u5668\u4eba\u89c6\u9891\u6d41\u5730\u5740
+     |      
+     |      :return: tuple:(ip, port)\uff1a\u673a\u5668\u4eba\u89c6\u9891\u6d41\u5730\u5740
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Camera:
+     |  
+     |  read_cv2_image(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u53c2\u6570\uff0c\u5728timeout\u65f6\u95f4\u5185\u672a\u83b7\u53d6\u5230\u89c6\u9891\u6d41\u5e27\uff0c\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest")\uff0c\u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u4f9d\u6b21\u8bfb\u53d6\u7f13\u5b58\u7684\u5e27\u4fe1\u606f\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27        \u6570\u636e\uff0c\u4f1a\u6e05\u7a7a\u65e7\u7684\u6570\u636e\u5e27
+     |      :return: image
+     |  
+     |  read_video_frame(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u65f6\u95f4\uff0c\u8d85\u8fc7\u6307\u5b9atimeout\u65f6\u95f4\u540e\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest") \u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u6d41\u6c34\u7ebf\u4f9d\u6b21\u8bfb\u53d6\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27\u6570\u636e\uff0c        \u6ce8\u610f\u4f1a\u6e05\u7a7a\u8001\u7684\u6570\u636e\u5e27\u961f\u5217
+     |      :return: frame, \u5df2\u89e3\u7801\u7684\u89c6\u9891\u6d41\u5e27\u5b57\u8282\u6d41
+    
+    class TelloCamera(Camera)
+     |  TelloCamera(robot)
+     |  
+     |  \u6559\u80b2\u65e0\u4eba\u673a \u6444\u50cf\u673a\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      TelloCamera
+     |      Camera
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  set_bitrate(self, bitrate)
+     |      \u8bbe\u7f6e\u98de\u673a\u4f20\u8f93\u7801\u7387
+     |      
+     |      :param bitrate: \u9700\u8981\u8bbe\u7f6e\u7684\u4f20\u8f93\u7801\u7387\uff0c[0, 6]
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  set_fps(self, fps)
+     |      \u8bbe\u7f6e\u98de\u673a\u89c6\u9891\u5e27\u7387
+     |      
+     |      :param fps: \u9700\u8981\u8bbe\u7f6e\u7684\u5e27\u7387\uff0c[high, middle, low]
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  set_resolution(self, resolution)
+     |      \u8bbe\u7f6e\u98de\u673a\u89c6\u9891\u5206\u8fa8\u7387
+     |      
+     |      :param resolution: \u9700\u8981\u8bbe\u7f6e\u7684\u89c6\u9891\u5206\u8fa8\u7387\uff0c[high, low]
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  start_video_stream(self, display=True)
+     |      \u5f00\u542f\u89c6\u9891\u6d41
+     |      
+     |      :param display: bool, \u662f\u5426\u663e\u793a\u89c6\u9891\u6d41
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  stop(self)
+     |  
+     |  stop_video_stream(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  conf
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Camera:
+     |  
+     |  read_cv2_image(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u53c2\u6570\uff0c\u5728timeout\u65f6\u95f4\u5185\u672a\u83b7\u53d6\u5230\u89c6\u9891\u6d41\u5e27\uff0c\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest")\uff0c\u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u4f9d\u6b21\u8bfb\u53d6\u7f13\u5b58\u7684\u5e27\u4fe1\u606f\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27        \u6570\u636e\uff0c\u4f1a\u6e05\u7a7a\u65e7\u7684\u6570\u636e\u5e27
+     |      :return: image
+     |  
+     |  read_video_frame(self, timeout=3, strategy='pipeline')
+     |      \u8bfb\u53d6\u4e00\u5e27\u89c6\u9891\u6d41\u5e27
+     |      
+     |      :param timeout: float: (0, inf)\uff0c\u8d85\u65f6\u65f6\u95f4\uff0c\u8d85\u8fc7\u6307\u5b9atimeout\u65f6\u95f4\u540e\u51fd\u6570\u8fd4\u56de
+     |      :param strategy: enum: ("pipeline", "newest") \u8bfb\u53d6\u5e27\u7b56\u7565\uff1apipeline \u6d41\u6c34\u7ebf\u4f9d\u6b21\u8bfb\u53d6\uff0cnewest \u83b7\u53d6\u6700\u65b0\u7684\u4e00\u5e27\u6570\u636e\uff0c        \u6ce8\u610f\u4f1a\u6e05\u7a7a\u8001\u7684\u6570\u636e\u5e27\u961f\u5217
+     |      :return: frame, \u5df2\u89e3\u7801\u7684\u89c6\u9891\u6d41\u5e27\u5b57\u8282\u6d41
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Camera:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    STREAM_360P = '360p'
+    STREAM_540P = '540p'
+    STREAM_720P = '720p'
+    __all__ = ['Camera', 'EPCamera', 'TelloCamera', 'STREAM_360P', 'STREAM...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\camera.py
+
+
+None
+Help on module robomaster.chassis in robomaster:
+
+NAME
+    robomaster.chassis
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.action.Action(builtins.object)
+        ChassisMoveAction
+    robomaster.module.Module(builtins.object)
+        Chassis
+    
+    class Chassis(robomaster.module.Module)
+     |  Chassis(robot)
+     |  
+     |  EP \u5e95\u76d8\u6a21\u5757\uff0c\u53ef\u4ee5\u63a7\u5236\u5e95\u76d8\u7684\u901f\u5ea6\u3001\u4f4d\u7f6e\u3001\u8ba2\u9605\u5e95\u76d8\u7684\u6570\u636e\uff0c\u63a7\u5236\u9ea6\u514b\u7eb3\u59c6\u8f6e\u7b49\u64cd\u4f5c
+     |  
+     |  Method resolution order:
+     |      Chassis
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  drive_speed(self, x=0.0, y=0.0, z=0.0, timeout=None)
+     |      \u8bbe\u7f6e\u5e95\u76d8\u901f\u5ea6\uff0c\u7acb\u5373\u751f\u6548
+     |      
+     |      :param x: float:[-3.5,3.5]\uff0cx \u8f74\u5411\u8fd0\u52a8\u901f\u5ea6\u5373\u524d\u8fdb\u901f\u5ea6\uff0c\u5355\u4f4d m/s
+     |      :param y: float:[-3.5,3.5]\uff0cy \u8f74\u5411\u8fd0\u52a8\u901f\u5ea6\u5373\u6a2a\u79fb\u901f\u5ea6\uff0c\u5355\u4f4d m/s
+     |      :param z: float:[-600,600]\uff0cz \u8f74\u5411\u8fd0\u52a8\u901f\u5ea6\u5373\u65cb\u8f6c\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      :param timeout: float:(0,inf)\uff0c\u8d85\u8fc7\u6307\u5b9a\u65f6\u95f4\u5185\u672a\u6536\u5230\u9ea6\u8f6e\u8f6c\u901f\u6307\u4ee4\uff0c\u4e3b\u52a8\u63a7\u5236\u673a\u5668\u4eba\u505c\u6b62\uff0c\u5355\u4f4d s
+     |  
+     |  drive_wheels(self, w1=0, w2=0, w3=0, w4=0, timeout=None)
+     |      \u8bbe\u7f6e\u9ea6\u8f6e\u8f6c\u901f
+     |      
+     |      :param w1: int:[-1000,1000]\uff0c\u53f3\u524d\u9ea6\u8f6e\u901f\u5ea6\uff0c\u4ee5\u8f66\u5934\u65b9\u5411\u524d\u8fdb\u65cb\u8f6c\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d rpm
+     |      :param w2: int:[-1000,1000]\uff0c\u5de6\u524d\u9ea6\u8f6e\u901f\u5ea6\uff0c\u4ee5\u8f66\u5934\u65b9\u5411\u524d\u8fdb\u65cb\u8f6c\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d rpm
+     |      :param w3: int:[-1000,1000]\uff0c\u5de6\u540e\u9ea6\u8f6e\u901f\u5ea6\uff0c\u4ee5\u8f66\u5934\u65b9\u5411\u524d\u8fdb\u65cb\u8f6c\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d rpm
+     |      :param w4: int:[-1000,1000]\uff0c\u53f3\u540e\u9ea6\u8f6e\u901f\u5ea6\uff0c\u4ee5\u8f66\u5934\u65b9\u5411\u524d\u8fdb\u65cb\u8f6c\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d rpm
+     |      :param timeout: float:(0,inf)\uff0c\u8d85\u8fc7\u6307\u5b9a\u65f6\u95f4\u5185\u672a\u6536\u5230\u9ea6\u8f6e\u8f6c\u901f\u6307\u4ee4\uff0c\u4e3b\u52a8\u63a7\u5236\u673a\u5668\u4eba\u505c\u6b62\uff0c\u5355\u4f4d s
+     |  
+     |  move(self, x=0, y=0, z=0, xy_speed=0.5, z_speed=30)
+     |      \u63a7\u5236\u5e95\u76d8\u8fd0\u52a8\u5f53\u6307\u5b9a\u4f4d\u7f6e\uff0c\u5750\u6807\u8f74\u539f\u70b9\u4e3a\u5f53\u524d\u4f4d\u7f6e
+     |      
+     |      :param x: float: [-5,5]\uff0cx\u8f74\u5411\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5355\u4f4d m
+     |      :param y: float: [-5,5]\uff0cy\u8f74\u5411\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5355\u4f4d m
+     |      :param z: float: [-1800,1800]\uff0cz\u8f74\u5411\u65cb\u8f6c\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      :param xy_speed: float: [0.5,2]\uff0cxy\u8f74\u5411\u8fd0\u52a8\u901f\u5ea6\uff0c\u5355\u4f4d m/s
+     |      :param z_speed: float: [10,540]\uff0cz\u8f74\u5411\u65cb\u8f6c\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      :return: \u8fd4\u56deaction\u5bf9\u8c61
+     |  
+     |  set_pwm_freq(self, pwm1=None, pwm2=None, pwm3=None, pwm4=None, pwm5=None, pwm6=None)
+     |      \u8bbe\u7f6ePWM\u8f93\u51fa\u9891\u7387
+     |      
+     |      :param pwm1~6: int:[0,50000]\uff0cpwm\u8f93\u51fa\u9891\u7387\uff0c\u5355\u4f4dHz
+     |  
+     |  set_pwm_value(self, pwm1=None, pwm2=None, pwm3=None, pwm4=None, pwm5=None, pwm6=None)
+     |      \u8bbe\u7f6ePWM\u8f93\u51fa\u5360\u7a7a\u6bd4
+     |      
+     |      :param pwm1: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |      :param pwm2: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |      :param pwm3: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |      :param pwm4: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |      :param pwm5: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |      :param pwm6: int:[0,100]\uff0cpwm\u8f93\u51fa\u5360\u7a7a\u6bd4\uff0c\u5355\u4f4d%
+     |  
+     |  stop(self)
+     |  
+     |  sub_attitude(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u59ff\u6001\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (yaw, pitch, roll)\uff1a
+     |      
+     |                      :yaw: yaw\u8f74\u59ff\u6001\u89d2
+     |                      :pitch: pitch\u8f74\u59ff\u6001\u89d2
+     |                      :roll: roll\u8f74\u59ff\u6001\u89d2
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_esc(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u7535\u8c03\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50)\uff0c\u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (speed[4], angle[4], timestamp, state):
+     |      
+     |                      :speed[4]: 4\u4e2a\u7535\u673a\u7684\u901f\u5ea6\u503c\uff0c\u5355\u4f4drpm,\u8303\u56f4\uff1a-8192~8191
+     |                      :angle[4]: 4\u4e2a\u7535\u673a\u7684\u89d2\u5ea6\u503c\uff0c\u6570\u503c\u8303\u56f4\uff1a0~32767\u6620\u5c040~360
+     |                      :timestamp: 4\u4e2a\u7535\u673a\u7684\u5305\u5e8f\u53f7
+     |                      :state: 4\u4e2a\u7535\u8c03\u7684\u72b6\u6001
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_imu(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8IMU\u9640\u87ba\u4eea\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50)\uff0c\u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (acc_x, acc_y, acc_z, gyro_x, gyro_y, gyro_z):
+     |      
+     |                  :acc_x: x\u8f74\u52a0\u901f\u5ea6
+     |                  :acc_y: y\u8f74\u52a0\u901f\u5ea6
+     |                  :acc_z: z\u8f74\u52a0\u901f\u5ea6
+     |                  :gyro_x: x\u8f74\u89d2\u901f\u5ea6
+     |                  :gyro_y: y\u8f74\u89d2\u901f\u5ea6
+     |                  :gyro_z: z\u8f74\u89d2\u901f\u5ea6
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_mode(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u6a21\u5f0f\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50)\uff0c\u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e mode:
+     |      
+     |                      :mode: \u5e95\u76d8\u6a21\u5f0f
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_position(self, cs=0, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u4f4d\u7f6e\u4fe1\u606f
+     |      
+     |      :param cs: int: [0,1] \u8bbe\u7f6e\u5e95\u76d8\u4f4d\u7f6e\u7684\u5750\u6807\u7cfb\uff0c0 \u673a\u5668\u4eba\u5f53\u524d\u4f4d\u7f6e\uff0c1 \u673a\u5668\u4eba\u4e0a\u7535\u4f4d\u7f6e
+     |      :param freq: enum: (1, 5, 10, 20, 50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (x, y, z):
+     |      
+     |                      :x: x\u8f74\u65b9\u5411\u8ddd\u79bb\uff0c\u5355\u4f4d m
+     |                      :y: y\u8f74\u65b9\u5411\u8ddd\u79bb\uff0c\u5355\u4f4d m
+     |                      :z: z\u8f74\u65b9\u5411\u65cb\u8f6c\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_status(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u72b6\u6001\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50)\uff0c\u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (static_flag, up_hill, down_hill, on_slope, is_pickup, slip_flag,         impact_x, impact_y, impact_z, roll_over, hill_static):
+     |      
+     |                      :static_flag: \u72b6\u6001\u6807\u51c6\u4f4d
+     |                      :up_hill: \u5904\u4e8e\u4e0a\u5761\u72b6\u6001
+     |                      :down_hill: \u5904\u4e8e\u4e0b\u5761\u72b6\u6001
+     |                      :on_slope: \u5904\u4e8e\u503e\u659c\u72b6\u6001
+     |                      :is_pickup: \u5904\u4e8e\u62b1\u8d77\u72b6\u6001
+     |                      :slip_flag: \u8f66\u8eab\u6253\u6ed1
+     |                      :impact_x: x\u8f74\u53d1\u751f\u649e\u51fb
+     |                      :impact_y: y\u8f74\u53d1\u751f\u649e\u51fb
+     |                      :impact_z: z\u8f74\u53d1\u751f\u649e\u51fb
+     |                      :roll_over: \u8f66\u8eab\u7ffb\u8f6c
+     |                      :hill_static: \u5904\u4e8e\u659c\u5761\u72b6\u6001
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_velocity(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5e95\u76d8\u52a0\u901f\u5ea6\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1, 5, 10, 20, 50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e\uff08vgx, vgy, vgz, vbx, vby, vbz)\uff1a
+     |      
+     |                      :vgx: \u4e0a\u7535\u65f6\u523b\u4e0b\u7684\u4e16\u754c\u5750\u6807\u7cfb\u4e0bx\u65b9\u5411\u901f\u5ea6
+     |                      :vgy: \u4e0a\u7535\u65f6\u523b\u4e0b\u7684\u4e16\u754c\u5750\u6807\u7cfb\u4e0by\u65b9\u5411\u901f\u5ea6
+     |                      :vgz: \u4e0a\u7535\u65f6\u523b\u4e0b\u7684\u4e16\u754c\u5750\u6807\u7cfb\u4e0bz\u65b9\u5411\u901f\u5ea6
+     |                      :vbx: \u5f53\u524d\u65f6\u523b\u7684\u8f66\u8eab\u5750\u6807\u7cfb\u4e0bx\u65b9\u5411\u901f\u5ea6
+     |                      :vby: \u5f53\u524d\u65f6\u523b\u7684\u8f66\u8eab\u5750\u6807\u7cfb\u4e0by\u65b9\u5411\u901f\u5ea6
+     |                      :vbz: \u5f53\u524d\u65f6\u523b\u7684\u8f66\u8eab\u5750\u6807\u7cfb\u4e0bz\u65b9\u5411\u901f\u5ea6
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_attitude(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8\u59ff\u6001\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_esc(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u7535\u8c03\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_imu(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8IMU\u9640\u87ba\u4eea\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_mode(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8\u6a21\u5f0f\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_position(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8\u4f4d\u7f6e\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_status(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8\u72b6\u6001\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  unsub_velocity(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u5e95\u76d8\u52a0\u901f\u5ea6\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class ChassisMoveAction(robomaster.action.Action)
+     |  ChassisMoveAction(x=0, y=0, z=0, spd_xy=0, spd_z=0, **kw)
+     |  
+     |  Method resolution order:
+     |      ChassisMoveAction
+     |      robomaster.action.Action
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, x=0, y=0, z=0, spd_xy=0, spd_z=0, **kw)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  encode(self)
+     |  
+     |  update_from_push(self, proto)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.action.Action:
+     |  
+     |  found_action(self, proto)
+     |  
+     |  found_proto(self, proto)
+     |  
+     |  make_action_key(self)
+     |  
+     |  wait_for_completed(self, timeout=None)
+     |      \u7b49\u5f85\u4efb\u52a1\u52a8\u4f5c\u76f4\u5230\u5b8c\u6210
+     |      
+     |      :param timeout: \u8d85\u65f6\uff0c\u5728timeout\u524d\u672a\u5b8c\u6210\u4efb\u52a1\u52a8\u4f5c\uff0c\u76f4\u63a5\u8fd4\u56de
+     |      :return: bool: \u52a8\u4f5c\u5728\u6307\u5b9a\u65f6\u95f4\u5185\u5b8c\u6210\uff0c\u8fd4\u56deTrue; \u52a8\u4f5c\u8d85\u65f6\u8fd4\u56deFalse
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.action.Action:
+     |  
+     |  failure_reason
+     |      \u83b7\u53d6\u6267\u884c\u5931\u8d25\u539f\u56e0
+     |  
+     |  has_failed
+     |      \u662f\u5426\u5df2\u7ecf\u6267\u884c\u5931\u8d25
+     |  
+     |  has_succeeded
+     |      \u662f\u5426\u5df2\u7ecf\u6210\u529f\u5b8c\u6210
+     |  
+     |  is_completed
+     |  
+     |  is_running
+     |      \u662f\u5426\u6b63\u5728\u8fd0\u884c\u4e2d\u3002
+     |  
+     |  state
+     |      \u8fd4\u56de\u5f53\u524d\u4efb\u52a1\u52a8\u4f5c\u72b6\u6001\u3002
+     |  
+     |  target
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.action.Action:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Chassis', 'ChassisMoveAction']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\chassis.py
+
+
+None
+Help on module robomaster.client in robomaster:
+
+NAME
+    robomaster.client
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Client
+        EventIdentify
+        MsgHandler
+        TextClient
+    
+    class Client(builtins.object)
+     |  Client(host=0, index=0, connect=None)
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, host=0, index=0, connect=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_handler(self, obj, name, f)
+     |  
+     |  add_msg_handler(self, handler)
+     |  
+     |  initialize(self)
+     |  
+     |  is_ready(self)
+     |  
+     |  remove_handler(self, name)
+     |  
+     |  resp_msg(self, msg)
+     |  
+     |  send(self, data)
+     |  
+     |  send_async_msg(self, msg)
+     |  
+     |  send_msg(self, msg)
+     |  
+     |  send_sync_msg(self, msg, callback=None, timeout=3.0)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  hostbyte
+     |  
+     |  remote_addr
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class EventIdentify(builtins.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class MsgHandler(builtins.object)
+     |  MsgHandler(proto_data=None, req_cb=None, ack_cb=None)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, proto_data=None, req_cb=None, ack_cb=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  dict_key(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods defined here:
+     |  
+     |  make_dict_key(cmd_set, cmd_id)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  proto_data
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class TextClient(builtins.object)
+     |  TextClient(conf)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, conf)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_handler(self, obj, name, f)
+     |  
+     |  check_is_dds_msg(self, msg)
+     |  
+     |  initialize(self)
+     |  
+     |  remove_handler(self, name)
+     |  
+     |  send(self, text)
+     |  
+     |  send_async_msg(self, msg)
+     |  
+     |  send_msg(self, msg)
+     |  
+     |  send_sync_msg(self, msg, callback=None, timeout=10)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    CLIENT_MAX_EVENT_NUM = 16
+    logger = <Logger sdk (ERROR)>
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\client.py
+
+
+None
+Help on module robomaster.config in robomaster:
+
+NAME
+    robomaster.config
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+DATA
+    DEFAULT_PROTO_TYPE = 'udp'
+    LOCAL_IP_STR = None
+    ROBOT_IP_STR = None
+    __all__ = ['LOCAL_IP_STR', 'ROBOT_IP_STR', 'DEFAULT_PROTO_TYPE']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\config.py
+
+
+None
+Help on module robomaster.conn in robomaster:
+
+NAME
+    robomaster.conn
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    BaseConnection(builtins.object)
+        Connection
+    
+    class Connection(BaseConnection)
+     |  Connection(host_addr, target_addr, proto='v1', protocol='udp')
+     |  
+     |  Method resolution order:
+     |      Connection
+     |      BaseConnection
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, host_addr, target_addr, proto='v1', protocol='udp')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  protocol
+     |  
+     |  target_addr
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from BaseConnection:
+     |  
+     |  close(self)
+     |  
+     |  create(self)
+     |  
+     |  recv(self)
+     |  
+     |  send(self, buf)
+     |  
+     |  send_self(self, buf)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from BaseConnection:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Connection']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\conn.py
+
+
+None
+Help on module robomaster.dds in robomaster:
+
+NAME
+    robomaster.dds
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Subject
+        TelloSubscriber
+    SubHandler(builtins.tuple)
+        SubHandler
+    robomaster.module.Module(builtins.object)
+        Subscriber
+    
+    class SubHandler(SubHandler)
+     |  SubHandler(obj, subject, f)
+     |  
+     |  SubHandler(obj, subject, f)
+     |  
+     |  Method resolution order:
+     |      SubHandler
+     |      SubHandler
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods inherited from SubHandler:
+     |  
+     |  __getnewargs__(self)
+     |      Return self as a plain tuple.  Used by copy and pickle.
+     |  
+     |  __repr__(self)
+     |      Return a nicely formatted representation string
+     |  
+     |  _asdict(self)
+     |      Return a new dict which maps field names to their values.
+     |  
+     |  _replace(self, /, **kwds)
+     |      Return a new SubHandler object replacing specified fields with new values
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from SubHandler:
+     |  
+     |  _make(iterable) from builtins.type
+     |      Make a new SubHandler object from a sequence or iterable
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from SubHandler:
+     |  
+     |  __new__(_cls, obj, subject, f)
+     |      Create new instance of SubHandler(obj, subject, f)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from SubHandler:
+     |  
+     |  obj
+     |      Alias for field number 0
+     |  
+     |  subject
+     |      Alias for field number 1
+     |  
+     |  f
+     |      Alias for field number 2
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from SubHandler:
+     |  
+     |  _field_defaults = {}
+     |  
+     |  _fields = ('obj', 'subject', 'f')
+     |  
+     |  _fields_defaults = {}
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |  
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |  
+     |  __contains__(self, key, /)
+     |      Return key in self.
+     |  
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |  
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |  
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |  
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |  
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |  
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |  
+     |  __len__(self, /)
+     |      Return len(self).
+     |  
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |  
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |  
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |  
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |  
+     |  count(self, value, /)
+     |      Return number of occurrences of value.
+     |  
+     |  index(self, value, start=0, stop=9223372036854775807, /)
+     |      Return first index of value.
+     |      
+     |      Raises ValueError if the value is not present.
+    
+    class Subject(builtins.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  data_info(self)
+     |  
+     |  exec(self)
+     |  
+     |  set_callback(self, callback, args, kw)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  freq = 1
+     |  
+     |  name = 'Subject'
+     |  
+     |  type = 0
+     |  
+     |  uid = 0
+    
+    class Subscriber(robomaster.module.Module)
+     |  Subscriber(robot)
+     |  
+     |  Method resolution order:
+     |      Subscriber
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_cmd_filter(self, cmd_set, cmd_id)
+     |  
+     |  add_subject_event_info(self, subject, callback=None, *args)
+     |      \u6dfb\u52a0\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :param subject: \u4e8b\u4ef6\u8ba2\u9605\u5bf9\u5e94\u7684subject
+     |      :param callback: \u4e8b\u4ef6\u8ba2\u9605\u5bf9\u5e94\u7684\u89e3\u6790\u51fd\u6570
+     |  
+     |  add_subject_info(self, subject, callback=None, *args)
+     |      \u8bf7\u6c42\u6570\u636e\u8ba2\u9605\u5e95\u5c42\u63a5\u53e3
+     |      
+     |      :param subject: \u6570\u636e\u8ba2\u9605\u5bf9\u5e94subject
+     |      :param callback: \u8ba2\u9605\u6570\u636e\u5bf9\u5e94\u7684\u89e3\u6790\u51fd\u6570
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  del_cmd_filter(self, cmd_set, cmd_id)
+     |  
+     |  del_subject_event_info(self, subject)
+     |      \u5220\u9664\u4e8b\u4ef6\u8ba2\u9605
+     |      
+     |      :param subject: \u4e8b\u4ef6\u8ba2\u9605\u5bf9\u5e94\u7684subject
+     |      :param callback: \u4e8b\u4ef6\u8ba2\u9605\u5bf9\u5e94\u7684\u89e3\u6790\u51fd\u6570
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  del_subject_info(self, subject_name)
+     |      \u5220\u9664\u6570\u636e\u8ba2\u9605\u6d88\u606f
+     |      
+     |      :param subject_name: \u8981\u5220\u9664\u7684\u8ba2\u9605subject
+     |      :return: bool: \u5220\u9664\u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  get_next_subject_id(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class TelloSubscriber(builtins.object)
+     |  TelloSubscriber(robot)
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_subject_info(self, subject, callback=None, *args)
+     |      \u8bf7\u6c42\u6570\u636e\u8ba2\u9605\u5e95\u5c42\u63a5\u53e3
+     |      
+     |      :param subject: \u6570\u636e\u8ba2\u9605\u5bf9\u5e94subject
+     |      :param callback: \u8ba2\u9605\u6570\u636e\u5bf9\u5e94\u7684\u89e3\u6790\u51fd\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  del_subject_info(self, subject_name)
+     |      \u5220\u9664\u6570\u636e\u8ba2\u9605\u6d88\u606f
+     |      
+     |      :param subject_name: \u8981\u5220\u9664\u7684\u8ba2\u9605subject
+     |      :return: bool: \u5220\u9664\u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  freq
+
+DATA
+    DDS_ARM = 'arm'
+    DDS_ATTITUDE = 'attitude'
+    DDS_BATTERY = 'battery'
+    DDS_CHASSIS_MODE = 'chassis_mode'
+    DDS_ESC = 'esc'
+    DDS_GIMBAL_BASE = 'gimbal_base'
+    DDS_GIMBAL_POS = 'gimbal_pos'
+    DDS_GRIPPER = 'gripper'
+    DDS_IMU = 'imu'
+    DDS_MOVE_MODE = 'move_mode'
+    DDS_PINBOARD = 'pinboard'
+    DDS_POSITION = 'position'
+    DDS_SA_STATUS = 'sa_status'
+    DDS_SBUS = 'sbus'
+    DDS_SERVO = 'servo'
+    DDS_STICK = 'stick'
+    DDS_SUB_TYPE_EVENT = 1
+    DDS_SUB_TYPE_PERIOD = 0
+    DDS_TELLO_ALL = 'tello_all'
+    DDS_TELLO_ATTITUDE = 'tello_attitude'
+    DDS_TELLO_BATTERY = 'tello_battery'
+    DDS_TELLO_DRONE = 'tello_drone'
+    DDS_TELLO_IMU = 'tello_imu'
+    DDS_TELLO_TEMP = 'tello_temperature'
+    DDS_TELLO_TOF = 'tello_tof'
+    DDS_TOF = 'tof'
+    DDS_VELOCITY = 'velocity'
+    SDK_FIRST_DDS_ID = 20
+    SDK_LAST_DDS_ID = 255
+    SUB_UID_MAP = {'arm': 562989256922701, 'attitude': 562990413275910, 'b...
+    TELLO_DDS_TIME_MAX = 666
+    dds_cmd_filter = {(72, 8)}
+    logger = <Logger sdk (ERROR)>
+    registered_subjects = {'AdapterSubject': <class 'robomaster.sensor.Ada...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\dds.py
+
+
+None
+Help on module robomaster.event in robomaster:
+
+NAME
+    robomaster.event
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Dispatcher
+    Handler(builtins.tuple)
+        Handler
+    
+    class Dispatcher(builtins.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  add_handler(self, obj, name, f)
+     |  
+     |  dispatch(self, msg, **kw)
+     |  
+     |  remove_handler(self, name)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Handler(Handler)
+     |  Handler(obj, name, f)
+     |  
+     |  Handler(obj, name, f)
+     |  
+     |  Method resolution order:
+     |      Handler
+     |      Handler
+     |      builtins.tuple
+     |      builtins.object
+     |  
+     |  Methods inherited from Handler:
+     |  
+     |  __getnewargs__(self)
+     |      Return self as a plain tuple.  Used by copy and pickle.
+     |  
+     |  __repr__(self)
+     |      Return a nicely formatted representation string
+     |  
+     |  _asdict(self)
+     |      Return a new dict which maps field names to their values.
+     |  
+     |  _replace(self, /, **kwds)
+     |      Return a new Handler object replacing specified fields with new values
+     |  
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from Handler:
+     |  
+     |  _make(iterable) from builtins.type
+     |      Make a new Handler object from a sequence or iterable
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from Handler:
+     |  
+     |  __new__(_cls, obj, name, f)
+     |      Create new instance of Handler(obj, name, f)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Handler:
+     |  
+     |  obj
+     |      Alias for field number 0
+     |  
+     |  name
+     |      Alias for field number 1
+     |  
+     |  f
+     |      Alias for field number 2
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from Handler:
+     |  
+     |  _field_defaults = {}
+     |  
+     |  _fields = ('obj', 'name', 'f')
+     |  
+     |  _fields_defaults = {}
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |  
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |  
+     |  __contains__(self, key, /)
+     |      Return key in self.
+     |  
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |  
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |  
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |  
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |  
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |  
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |  
+     |  __len__(self, /)
+     |      Return len(self).
+     |  
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |  
+     |  __mul__(self, value, /)
+     |      Return self*value.
+     |  
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |  
+     |  __rmul__(self, value, /)
+     |      Return value*self.
+     |  
+     |  count(self, value, /)
+     |      Return number of occurrences of value.
+     |  
+     |  index(self, value, start=0, stop=9223372036854775807, /)
+     |      Return first index of value.
+     |      
+     |      Raises ValueError if the value is not present.
+
+DATA
+    __all__ = ['Handler', 'Dispatcher']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\event.py
+
+
+None
+Help on module robomaster.exceptions in robomaster:
+
+NAME
+    robomaster.exceptions
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    SDKException(builtins.Exception)
+        TimeOutError
+    
+    class TimeOutError(SDKException)
+     |  Remote Call Timeout.
+     |  
+     |  Method resolution order:
+     |      TimeOutError
+     |      SDKException
+     |      builtins.Exception
+     |      builtins.BaseException
+     |      builtins.object
+     |  
+     |  Data descriptors inherited from SDKException:
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.Exception:
+     |  
+     |  __init__(self, /, *args, **kwargs)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from builtins.Exception:
+     |  
+     |  __new__(*args, **kwargs) from builtins.type
+     |      Create and return a new object.  See help(type) for accurate signature.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.BaseException:
+     |  
+     |  __delattr__(self, name, /)
+     |      Implement delattr(self, name).
+     |  
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |  
+     |  __reduce__(...)
+     |      Helper for pickle.
+     |  
+     |  __repr__(self, /)
+     |      Return repr(self).
+     |  
+     |  __setattr__(self, name, value, /)
+     |      Implement setattr(self, name, value).
+     |  
+     |  __setstate__(...)
+     |  
+     |  __str__(self, /)
+     |      Return str(self).
+     |  
+     |  with_traceback(...)
+     |      Exception.with_traceback(tb) --
+     |      set self.__traceback__ to tb and return self.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from builtins.BaseException:
+     |  
+     |  __cause__
+     |      exception cause
+     |  
+     |  __context__
+     |      exception context
+     |  
+     |  __dict__
+     |  
+     |  __suppress_context__
+     |  
+     |  __traceback__
+     |  
+     |  args
+
+DATA
+    __all__ = ['TimeOutError']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\exceptions.py
+
+
+None
+Help on module robomaster.flight in robomaster:
+
+NAME
+    robomaster.flight
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Flight
+    
+    class Flight(builtins.object)
+     |  Flight(robot)
+     |  
+     |  \u6559\u80b2\u65e0\u4eba\u673a \u98de\u884c\u5668\u6a21\u5757
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  backward(self, distance=0, retry=True)
+     |      \u5411\u540e\u98de\u884cdistance\u5398\u7c73\uff0c \u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u540e\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  curve(self, x1=0, y1=0, z1=0, x2=0, y2=0, z2=0, speed=20, mid=None, retry=True)
+     |      \u4ee5\u8bbe\u7f6e\u901f\u5ea6\u98de\u5f27\u7ebf\uff0c\u7ecf\u8fc7\u5bf9\u5e94\u5750\u6807\u7cfb\u4e2d\u7684(x1, y1, z1)\u70b9\u5230\uff08x2, y2, z2\uff09\u70b9
+     |      
+     |      \u5982\u679c\u9009\u7528mid\u53c2\u6570\uff0c\u5219\u5bf9\u5e94\u5750\u6807\u7cfb\u4e3a\u6307\u5b9a\u6311\u6218\u5361\u7684\u5750\u6807\u7cfb\u3002\u4e0d\u4f7f\u7528\u6311\u6218\u5361\u65f6\uff0c\u98de\u673a\u7684\u524d\u65b9\u4e3ax\u8f74\u6b63\u65b9\u5411\uff0c\u98de\u673a\u7684\u5de6\u65b9\u4e3ay\u8f74\u7684\u6b63\u65b9\u5411
+     |      \u5982\u679cmid\u53c2\u6570\u4e3a\u9ed8\u8ba4\u503cNone,\u5219\u4e3a\u98de\u673a\u81ea\u8eab\u5750\u6807\u7cfb
+     |      
+     |      :param: x1: float:[-500, 500] x\u8f74\u5750\u6807
+     |      :param: y1: float:[-500, 500] y\u8f74\u5750\u6807
+     |      :param: z1: float:\u5982\u679c\u4f7f\u7528\u6311\u6218\u5361\uff08mid\u4e0d\u4e3aNone\uff09\uff0c\u53d6\u503c\u8303\u56f4\u4e3a [0, 500]; \u5982\u679c\u4e0d\u4f7f\u7528\u6311\u6218\u5361\uff08mid\u4e3aNone\uff09\uff0c\u53d6\u503c\u8303\u56f4\u4e3a[-500, 500]
+     |      :param: x2: float:[-500, 500] x\u8f74\u5750\u6807
+     |      :param: y2: float:[-500, 500] y\u8f74\u5750\u6807
+     |      :param: z2: float:\u5982\u679c\u4f7f\u7528\u6311\u6218\u5361\uff08mid\u4e0d\u4e3aNone\uff09\uff0c\u53d6\u503c\u8303\u56f4\u4e3a [0, 500]; \u5982\u679c\u4e0d\u4f7f\u7528\u6311\u6218\u5361\uff08mid\u4e3aNone\uff09\uff0c\u53d6\u503c\u8303\u56f4\u4e3a[-500, 500]
+     |      :param: speed: float:[10, 60] \u98de\u884c\u7684\u901f\u5ea6
+     |      :param: mid: string: \u4e0d\u4f7f\u7528\u6311\u6218\u5361\u65f6mid\u4e3aNone\uff0c\u8fd0\u52a8\u5750\u6807\u7cfb\u4e3a\u98de\u673a\u81ea\u8eab\u5750\u6807\u7cfb\uff1b\u5f53\u4f7f\u7528\u6311\u6218\u5361\u65f6mid\u4e3a\u5bf9\u5e94\u6311\u6218\u5361\u7f16\u53f7\uff0c\u8fd0\u52a8\u5750\u6807\u7cfb\u4e3a\u5bf9\u5e94\u6311\u6218\u5361
+     |                          \u5750\u6807\u7cfb\u3002\u6311\u6218\u5361\u7f16\u53f7\u53c2\u8003\u6311\u6218\u5361\u4f7f\u7528\u8bf4\u660e
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  down(self, distance=0, retry=True)
+     |      \u5411\u4e0b\u98dedistance\u5398\u7c73\uff0c\u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u4e0b\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  flip(self, direction='f', retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u6307\u5b9a\u65b9\u5411\u7ffb\u6eda
+     |      
+     |      \u5f53\u7535\u91cf\u4f4e\u4e8e50%\u65f6\u65e0\u6cd5\u5b8c\u6210\u7ffb\u6eda
+     |      :param direction: string: \u98de\u673a\u7ffb\u8f6c\u7684\u65b9\u5411\uff0c ’l‘ \u5411\u5de6\u7ffb\u6eda\uff0c’r‘ \u5411\u53f3\u7ffb\u6eda\uff0c’f‘ \u5411\u524d\u7ffb\u6eda\uff0c ’b‘ \u5411\u540e\u7ffb\u6eda
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  flip_backward(self, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u540e\u7ffb\u6eda
+     |      
+     |      \u5f53\u7535\u91cf\u4f4e\u4e8e50%\u65f6\u65e0\u6cd5\u5b8c\u6210\u7ffb\u6eda
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  flip_forward(self, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u524d\u7ffb\u6eda
+     |      
+     |      \u5f53\u7535\u91cf\u4f4e\u4e8e50%\u65f6\u65e0\u6cd5\u5b8c\u6210\u7ffb\u6eda
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  flip_left(self, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u5de6\u7ffb\u6eda
+     |      
+     |      \u5f53\u7535\u91cf\u4f4e\u4e8e50%\u65f6\u65e0\u6cd5\u5b8c\u6210\u7ffb\u6eda
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  flip_right(self, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u53f3\u7ffb\u6eda
+     |      
+     |      \u5f53\u7535\u91cf\u4f4e\u4e8e50%\u65f6\u65e0\u6cd5\u5b8c\u6210\u7ffb\u6eda
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  fly(self, direction='forward', distance=0, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u5411\u6307\u5b9a\u65b9\u5411\u98de\u884c\u6307\u5b9a\u8ddd\u79bb\u3002
+     |      
+     |      :param: direction: string: \u98de\u884c\u7684\u65b9\u5411\uff0c"forward" \u5411\u4e0a\u98de\u884c\uff0c "back" \u5411\u4e0b\u98de\u884c\uff0c "up" \u5411\u4e0a\u98de\u884c\uff0c
+     |                                  "down" \u5411\u4e0b\u98de\u884c\uff0c "left" \u5411\u5de6\u98de\u884c\uff0c "right" \u5411\u53f3\u98de\u884c
+     |      :param: distance: float:[20, 500]\uff0c\u98de\u884c\u7684\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  forward(self, distance=0, retry=True)
+     |      \u5411\u524d\u98de\u884cdistance\u5398\u7c73\uff0c\u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u524d\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  get_speed(self)
+     |      \u83b7\u53d6\u5f53\u524d\u8bbe\u7f6e\u901f\u5ea6
+     |      
+     |      :return: float: \u5f53\u524d\u901f\u5ea6\u503c\uff0c\u5355\u4f4d cm/s
+     |  
+     |  go(self, x, y, z, speed=10, mid=None, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u4ee5\u8bbe\u7f6e\u901f\u5ea6\u98de\u5411\u6307\u5b9a\u5750\u6807\u4f4d\u7f6e
+     |      
+     |      \u6ce8\u610f\uff0c x,y,z \u540c\u65f6\u5728-20~20\u65f6\uff0c\u98de\u673a\u4e0d\u4f1a\u8fd0\u52a8\u3002\u5f53\u4e0d\u4f7f\u7528\u6311\u6218\u5361\u65f6\uff0c\u98de\u673a\u6240\u5728\u4f4d\u7f6e\u4e3a\u5750\u6807\u7cfb\u539f\u70b9\uff0c\u98de\u673a\u7684\u524d\u65b9\u4e3ax\u8f74\u6b63\u65b9\u5411\uff0c\u98de\u673a\u7684\u5de6\u65b9\u4e3ay\u8f74\u7684\u6b63\u65b9\u5411
+     |      
+     |      :param: x: float: [-500, 500] x\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: y: float: [-500, 500] y\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: z: float: [-500, 500] z\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: speed: float: [10, 100] \u8fd0\u52a8\u901f\u5ea6\uff0c \u5355\u4f4d cm/s
+     |      :param: mid: string: \u4e0d\u4f7f\u7528\u6311\u6218\u5361\u65f6mid\u4e3aNone\uff0c\u8fd0\u52a8\u5750\u6807\u7cfb\u4e3a\u98de\u673a\u81ea\u8eab\u5750\u6807\u7cfb\uff1b\u5f53\u4f7f\u7528\u6311\u6218\u5361\u65f6mid\u4e3a\u5bf9\u5e94\u6311\u6218\u5361\u7f16\u53f7\uff0c
+     |                          \u8fd0\u52a8\u5750\u6807\u7cfb\u4e3a\u6307\u5b9a\u6311\u6218\u5361\u7684\u5750\u6807\u7cfb\u3002\u652f\u6301\u7f16\u53f7\u53ef\u53c2\u8003\u6311\u6218\u5361\u4f7f\u7528\u8bf4\u660e\u3002
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  jump(self, x=0, y=0, z=0, speed=20, yaw=0, mid1='m-1', mid2='m-1', retry=True)
+     |      \u98de\u884c\u5668\u98de\u5f80mid1\u5750\u6807\u7cfb\u7684(x, y, z)\u70b9\u540e\u60ac\u505c\uff0c\u8bc6\u522bmid2\u7684\u6311\u6218\u5361\uff0c\u98de\u5230mid2\u5750\u6807\u7cfb\u4e0b(0, 0, z)\u7684\u4f4d\u7f6e\u5e76\u4e14\u65cb\u8f6c\u5230\u8bbe\u5b9a\u7684yaw\u503c
+     |      
+     |      :param: x: float: [-500, 500]\uff0cx\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: y: float: [-500, 500]\uff0cy\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: z: float: [0, 500]\uff0cz\u8f74\u7684\u5750\u6807\uff0c\u5355\u4f4d cm
+     |      :param: speed: float:[10, 60]\uff0c\u98de\u884c\u7684\u901f\u5ea6, \u5355\u4f4d cm/s
+     |      :param: yaw: [-360, 360] \u6700\u7ec8\u60ac\u505c\u7684yaw\u8f74\u89d2\u5ea6, \u5355\u4f4d °
+     |      :param: mid1: string: \u7b2c\u4e00\u4e2a\u6311\u6218\u5361\u7684id, \u6311\u6218\u5361id\u7684\u4ecb\u7ecd\u53c2\u8003\u6311\u6218\u5361\u4f7f\u7528\u8bf4\u660e
+     |      :param: mid2: string: \u7b2c\u4e00\u4e2a\u6311\u6218\u5361\u7684id, \u6311\u6218\u5361id\u7684\u4ecb\u7ecd\u53c2\u8003\u6311\u6218\u5361\u4f7f\u7528\u8bf4\u660e
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  land(self, retry=True)
+     |      \u81ea\u52a8\u964d\u843d
+     |      
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  left(self, distance=0, retry=True)
+     |      \u5411\u5de6\u98de\u884cdistance\u5398\u7c73\uff0c \u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u5de6\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  mission_pad_off(self)
+     |      \u5173\u95ed\u6311\u6218\u5361\u63a2\u6d4b
+     |      
+     |      :return: bool:\u63a7\u5236\u7ed3\u679c
+     |  
+     |  mission_pad_on(self)
+     |      \u6253\u5f00\u6311\u6218\u5361\u63a2\u6d4b
+     |      
+     |      \u9ed8\u8ba4\u540c\u65f6\u6253\u5f00\u524d\u89c6\u548c\u4e0b\u89c6\u63a2\u6d4b
+     |      :return: bool: \u63a7\u5236\u7ed3\u679c
+     |  
+     |  motor_off(self)
+     |      \u63a7\u5236\u98de\u673a\u505c\u6868
+     |      
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  motor_on(self)
+     |      \u63a7\u5236\u98de\u673a\u8f6c\u6868
+     |      
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  move(self, x=0, y=0, z=0, speed=10, mid=None, retry=True)
+     |      \u98de\u673a\u76f8\u5bf9\u4f4d\u7f6e\u7684\u63a7\u5236
+     |      
+     |      x/y/z\u503c\u4e0d\u80fd\u540c\u65f6\u5728-20~20\u4e4b\u95f4\uff0c\u9002\u7528\u8be5\u63a5\u53e3\u65f6\u5e94\u5f53\u5148\u6253\u5f00\u6311\u6218\u5361\u68c0\u6d4b\u529f\u80fd
+     |      
+     |      :param: x: float:[-500, 500]\uff0c\u76ee\u6807\u4f4d\u7f6e\u5728\u6311\u6218\u5361\u5750\u6807\u7cfb\u4e2d\u7684x\u5750\u6807\uff0c\u5b9e\u9645\u53d6\u503c\u8303\u56f4\u8981\u6839\u636e\u6311\u6218\u5361\u5927\u5c0f\u8c03\u6574\uff0c\u5355\u4f4d cm
+     |      :param: y: float:[-500, 500]\uff0c\u76ee\u6807\u4f4d\u7f6e\u5728\u6311\u6218\u5361\u5750\u6807\u7cfb\u4e2d\u7684y\u5750\u6807\uff0c\u5b9e\u9645\u53d6\u503c\u8303\u56f4\u8981\u6839\u636e\u6311\u6218\u5361\u5927\u5c0f\u8c03\u6574\uff0c\u5355\u4f4d cm
+     |      :param: z: float:[-500, 500]\uff0c\u76ee\u6807\u4f4d\u7f6e\u5728\u6311\u6218\u5361\u5750\u6807\u7cfb\u4e2d\u7684z\u5750\u6807\uff0c\u5b9e\u9645\u53d6\u503c\u8303\u56f4\u8981\u6839\u636e\u6311\u6218\u5361\u5927\u5c0f\u8c03\u6574\uff0c\u5355\u4f4d cm
+     |      :param: speed: int:[10, 100]\uff0c\u8fd0\u52a8\u901f\u5ea6\uff0c\u5355\u4f4d cm/s
+     |      :param: mid: string: \u6311\u6218\u5361\u7684\u7f16\u53f7\uff0c\u652f\u6301\u7f16\u53f7\u53ef\u53c2\u8003\u6311\u6218\u5361\u4f7f\u7528\u8bf4\u660e
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  moveto(self, yaw=0, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u65cb\u8f6c\u5230\u6311\u6218\u5361\u5750\u6807\u7cfb\u4e2d\u6307\u5b9a\u7684\u7edd\u5bf9\u89d2\u5ea6
+     |      
+     |      :param: yaw: float:[-180, 180]\uff0c\u98de\u673a\u5728\u6311\u6218\u5361\u4e0a\u7684\u7684\u89d2\u5ea6\uff0c\u4fef\u89c6\u65f6\uff0c\u987a\u65f6\u9488\u4e3a\u6b63\u89d2\u5ea6\uff0c\u9006\u65f6\u9488\u4e3a\u8d1f\u89d2\u5ea6
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action \u5bf9\u8c61
+     |  
+     |  rc(self, a=0, b=0, c=0, d=0)
+     |      \u63a7\u5236\u98de\u673a\u9065\u63a7\u5668\u7684\u56db\u4e2a\u6746\u91cf
+     |      
+     |      :param a: float:[-100, 100] \u6a2a\u6eda
+     |      :param b: float:[-100, 100] \u4fef\u4ef0
+     |      :param c: float:[-100, 100] \u6cb9\u95e8
+     |      :param d: float:[-100, 100] \u504f\u822a
+     |  
+     |  right(self, distance=0, retry=True)
+     |      \u5411\u53f3\u98de\u884cdistance\u5398\u7c73\uff0c \u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u53f3\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  rotate(self, angle=0, retry=True)
+     |      \u63a7\u5236\u98de\u673a\u65cb\u8f6c\u6307\u5b9a\u89d2\u5ea6
+     |      
+     |      :param: angle: float:[-360, 360] \u65cb\u8f6c\u7684\u89d2\u5ea6\uff0c\u4fef\u89c6\u98de\u673a\u65f6\uff0c\u987a\u65f6\u9488\u4e3a\u6b63\u89d2\u5ea6\uff0c\u9006\u65f6\u9488\u4e3a\u8d1f\u89d2\u5ea6
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  set_speed(self, speed=0)
+     |      \u8bbe\u7f6e\u5f53\u524d\u98de\u884c\u901f\u5ea6
+     |      
+     |      :param speed: float:[10, 100]\uff0c\u98de\u884c\u901f\u5ea6\uff0c\u5355\u4f4d cm/s
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  stop(self, retry=True)
+     |      \u505c\u6b62rc\u8fd0\u52a8\u5e76\u60ac\u505c\uff0c\u4efb\u4f55\u65f6\u5019\u90fd\u53ef\u4ee5
+     |      
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: bool: \u63a7\u5236\u7ed3\u679c
+     |  
+     |  sub_attitude(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u98de\u673a\u59ff\u6001\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1, 5, 10)\uff0c\u8ba2\u9605\u6570\u636e\u7684\u9891\u7387
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u6389\u51fd\u6570
+     |      :param args: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :param kw: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_imu(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u98de\u673a\u9640\u87ba\u4eea\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1, 5, 10)\uff0c\u8ba2\u9605\u6570\u636e\u7684\u9891\u7387
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u6389\u51fd\u6570
+     |      :param args: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :param kw: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  takeoff(self, retry=True)
+     |      \u81ea\u52a8\u8d77\u98de
+     |      
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  throw_fly(self)
+     |      \u63a7\u5236\u98de\u673a\u629b\u98de
+     |      
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  unsub_attitude(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u98de\u673a\u59ff\u6001\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_imu(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u98de\u673a\u9640\u87ba\u4eea\u4fe1\u606f
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  up(self, distance=0, retry=True)
+     |      \u5411\u4e0a\u98dedistance\u5398\u7c73\uff0c\u6307\u76f8\u5bf9\u8ddd\u79bb
+     |      
+     |      :param: distance: float:[20, 500]\u5411\u4e0a\u98de\u884c\u7684\u76f8\u5bf9\u8ddd\u79bb\uff0c\u5355\u4f4d cm
+     |      :param: retry: bool:\u662f\u5426\u91cd\u53d1\u547d\u4ee4
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    BACKWARD = 'back'
+    CLOCKWISE = 'cw'
+    COUNTERCLOCKWISE = 'ccw'
+    DOWN = 'down'
+    FORWARD = 'forward'
+    LEFT = 'left'
+    RIGHT = 'right'
+    UP = 'up'
+    __all__ = ['Flight', 'FORWARD', 'BACKWARD', 'UP', 'DOWN', 'LEFT', 'RIG...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\flight.py
+
+
+None
+Help on module robomaster.gimbal in robomaster:
+
+NAME
+    robomaster.gimbal
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.action.Action(builtins.object)
+        GimbalMoveAction
+    robomaster.module.Module(builtins.object)
+        Gimbal
+    
+    class Gimbal(robomaster.module.Module)
+     |  Gimbal(robot)
+     |  
+     |  EP \u4e91\u53f0\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Gimbal
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  drive_speed(self, pitch_speed=30.0, yaw_speed=30.0)
+     |      \u63a7\u5236\u4ee5\u4e00\u5b9a\u901f\u5ea6\u8f6c\u52a8
+     |      
+     |      :param pitch_speed: float: [-360, 360]\uff0cpitch\u8f74\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      :param yaw_speed: float: [-360, 360]\uff0cyaw \u8f74\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      
+     |      :return: bool:\u8c03\u7528\u7ed3\u679c
+     |  
+     |  move(self, pitch=0, yaw=0, pitch_speed=30, yaw_speed=30)
+     |      \u63a7\u5236\u4e91\u53f0\u8fd0\u52a8\u5230\u6307\u5b9a\u4f4d\u7f6e\uff0c\u5750\u6807\u8f74\u539f\u70b9\u4e3a\u5f53\u524d\u4f4d\u7f6e
+     |      
+     |      :param pitch: float: [-55, 55]\uff0cpitch \u8f74\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      :param yaw: float: [-55, 55]\uff0cyaw \u8f74\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      :param pitch_speed: float: [0, 540]\uff0cpitch \u8f74\u8fd0\u52a8\u901f\u901f\uff0c\u5355\u4f4d °/s
+     |      :param yaw_speed: float: [0, 540]\uff0cyaw \u8f74\u8fd0\u52a8\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      :return: \u8fd4\u56deaction\u5bf9\u8c61
+     |  
+     |  moveto(self, pitch=0, yaw=0, pitch_speed=30, yaw_speed=30)
+     |      \u63a7\u5236\u4e91\u53f0\u8fd0\u52a8\u5230\u6307\u5b9a\u4f4d\u7f6e\uff0c\u5750\u6807\u8f74\u539f\u70b9\u4e3a\u4e0a\u7535\u4f4d\u7f6e
+     |      
+     |      :param pitch: int: [-25, 30]\uff0cpitch \u8f74\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      :param yaw: int: [-250, 250]\uff0cyaw \u8f74\u89d2\u5ea6\uff0c\u5355\u4f4d °
+     |      :param pitch_speed: int: [0, 540]\uff0cpitch \u8f74\u8fd0\u52a8\u901f\u5ea6\uff0c\u5355\u4f4d °
+     |      :param yaw_speed: int: [0, 540]\uff0cyaw \u8f74\u8fd0\u52a8\u901f\u5ea6\uff0c\u5355\u4f4d °
+     |      :return: \u8fd4\u56deaction\u5bf9\u8c61
+     |  
+     |  recenter(self, pitch_speed=60, yaw_speed=60)
+     |      \u63a7\u5236\u4e91\u53f0\u56de\u4e2d
+     |      
+     |      :param pitch_speed: float: [-360, 360]\uff0cpitch\u8f74\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      :param yaw_speed: float: [-360, 360]\uff0cyaw \u8f74\u901f\u5ea6\uff0c\u5355\u4f4d °/s
+     |      
+     |      :return: \u8fd4\u56deaction\u5bf9\u8c61
+     |  
+     |  resume(self)
+     |      \u63a7\u5236\u4e91\u53f0\u4ece\u4f11\u7720\u72b6\u6001\u4e2d\u6062\u590d
+     |      
+     |      :return: bool:\u8c03\u7528\u7ed3\u679c
+     |  
+     |  sub_angle(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u4e91\u53f0\u59ff\u6001\u89d2\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (pitch_angle, yaw_angle, pitch_ground_angle, yaw_ground_angle):
+     |      
+     |                      :pitch_angle: \u76f8\u5bf9\u5e95\u76d8\u7684pitch\u8f74\u89d2\u5ea6
+     |                      :yaw_angle: \u76f8\u5bf9\u5e95\u76d8\u7684yaw\u8f74\u89d2\u5ea6
+     |                      :pitch_ground_angle: \u4e0a\u7535\u65f6\u523bpitch\u8f74\u89d2\u5ea6
+     |                      :yaw_ground_angle: \u4e0a\u7535\u65f6\u523byaw\u8f74\u89d2\u5ea6
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  suspend(self)
+     |      \u63a7\u5236\u4e91\u53f0\u8fdb\u5165\u4f11\u7720\u72b6\u6001
+     |      
+     |      :return: bool:\u8c03\u7528\u7ed3\u679c
+     |  
+     |  unsub_angle(self)
+     |      \u53d6\u6d88\u4e91\u53f0\u59ff\u6001\u89d2\u8ba2\u9605
+     |      
+     |      :return: bool: \u53d6\u6d88\u6570\u636e\u8ba2\u9605\u7684\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class GimbalMoveAction(robomaster.action.Action)
+     |  GimbalMoveAction(pitch=0, yaw=0, pitch_speed=30, yaw_speed=30, coord=4, **kw)
+     |  
+     |  Method resolution order:
+     |      GimbalMoveAction
+     |      robomaster.action.Action
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, pitch=0, yaw=0, pitch_speed=30, yaw_speed=30, coord=4, **kw)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  encode(self)
+     |  
+     |  update_from_push(self, proto)
+     |      \u63a8\u9001\u6d88\u606f\u66f4\u65b0Action\u72b6\u6001
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.action.Action:
+     |  
+     |  found_action(self, proto)
+     |  
+     |  found_proto(self, proto)
+     |  
+     |  make_action_key(self)
+     |  
+     |  wait_for_completed(self, timeout=None)
+     |      \u7b49\u5f85\u4efb\u52a1\u52a8\u4f5c\u76f4\u5230\u5b8c\u6210
+     |      
+     |      :param timeout: \u8d85\u65f6\uff0c\u5728timeout\u524d\u672a\u5b8c\u6210\u4efb\u52a1\u52a8\u4f5c\uff0c\u76f4\u63a5\u8fd4\u56de
+     |      :return: bool: \u52a8\u4f5c\u5728\u6307\u5b9a\u65f6\u95f4\u5185\u5b8c\u6210\uff0c\u8fd4\u56deTrue; \u52a8\u4f5c\u8d85\u65f6\u8fd4\u56deFalse
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.action.Action:
+     |  
+     |  failure_reason
+     |      \u83b7\u53d6\u6267\u884c\u5931\u8d25\u539f\u56e0
+     |  
+     |  has_failed
+     |      \u662f\u5426\u5df2\u7ecf\u6267\u884c\u5931\u8d25
+     |  
+     |  has_succeeded
+     |      \u662f\u5426\u5df2\u7ecf\u6210\u529f\u5b8c\u6210
+     |  
+     |  is_completed
+     |  
+     |  is_running
+     |      \u662f\u5426\u6b63\u5728\u8fd0\u884c\u4e2d\u3002
+     |  
+     |  state
+     |      \u8fd4\u56de\u5f53\u524d\u4efb\u52a1\u52a8\u4f5c\u72b6\u6001\u3002
+     |  
+     |  target
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.action.Action:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Gimbal', 'GimbalMoveAction']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\gimbal.py
+
+
+None
+Help on module robomaster.gripper in robomaster:
+
+NAME
+    robomaster.gripper
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Gripper
+    
+    class Gripper(robomaster.module.Module)
+     |  Gripper(robot)
+     |  
+     |  EP \u673a\u68b0\u722a\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Gripper
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  close(self, power=50)
+     |      \u63a7\u5236\u673a\u68b0\u722a\u5173\u95ed
+     |      
+     |      :param power: int: [1, 100]\uff0c\u63a7\u5236\u51fa\u529b
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  open(self, power=50)
+     |      \u63a7\u5236\u673a\u68b0\u722a\u5f20\u5f00
+     |      
+     |      :param power: int: [1, 100]\uff0c\u63a7\u5236\u51fa\u529b
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  pause(self)
+     |      \u63a7\u5236\u673a\u68b0\u722a\u505c\u6b62
+     |      
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  reset(self)
+     |  
+     |  sub_status(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u5939\u722a\u7684\u72b6\u6001\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50)\uff0c\u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u8c03\u51fd\u6570,\u56de\u8c03\u51fd\u6570\u53c2\u6570\u4e3a\uff1a
+     |      
+     |                      :gripper_status: opened:\u5939\u722a\u6253\u5f00 closed:\u5939\u722a\u95ed\u5408\u3002
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (status):
+     |      
+     |                      :status: opened \u5939\u722a\u5b8c\u5168\u6253\u5f00\uff0cclosed \u5939\u722a\u5b8c\u5168\u95ed\u5408\uff0cnormal \u5904\u5728\u4e2d\u95f4\u6b63\u5e38\u72b6\u6001
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_status(self)
+     |      \u53d6\u6d88\u5939\u722a\u72b6\u6001\u4fe1\u606f\u8ba2\u9605
+     |      
+     |      :return: \u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Gripper']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\gripper.py
+
+
+None
+Help on module robomaster.led in robomaster:
+
+NAME
+    robomaster.led
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Led
+    
+    class Led(robomaster.module.Module)
+     |  Led(robot)
+     |  
+     |  EP \u88c5\u7532\u706f\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Led
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  set_gimbal_led(self, comp='top_all', r=255, g=255, b=255, led_list=[0, 1, 2, 3], effect='on')
+     |      \u8bbe\u7f6e\u4e91\u53f0\u706f\u6548
+     |      
+     |      :param comp: enum: ("top_all", "top_left", "top_right")\uff0c\u4e91\u53f0\u90e8\u4f4d
+     |      :param r: int: [0, 255]\uff0cRGB\u7ea2\u8272\u5206\u91cf\u503c
+     |      :param g: int: [0, 255]\uff0cRGB\u7eff\u8272\u5206\u91cf\u503c
+     |      :param b: int: [0, 255]\uff0cRGB\u84dd\u8272\u5206\u91cf\u503c
+     |      :param led_list: list [idx0, idx1, ...]\uff0cidx\uff1aint[0,7] \u4e91\u53f0\u706f\u5e8f\u53f7\u5217\u8868.
+     |      :param effect: enum: ("on", "off")\uff0c\u706f\u6548\u7c7b\u578b
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  set_led(self, comp='all', r=0, g=0, b=0, effect='on', freq=1)
+     |      \u8bbe\u7f6e\u6574\u673a\u88c5\u7532\u706f\u6548
+     |      
+     |      :param comp: enum: ("all", "top_all", "top_right", "top_left", "bottom_all", "bottom_front",         "bottom_back", "bottom_left", "bottom_right") \u706f\u6548\u90e8\u4f4d\uff0call: \u6240\u6709\u88c5\u7532\u706f\uff1btop_all:\u4e91\u53f0\u6240\u6709\u88c5\u7532\u706f\uff1b        top_right: \u4e91\u53f0\u53f3\u4fa7\u88c5\u7532\u706f\uff1btop_left: \u4e91\u53f0\u5de6\u4fa7\u88c5\u7532\u706f; bottom_all: \u5e95\u76d8\u6240\u6709\u88c5\u7532\u706f\uff1bbottom_front: \u524d\u88c5\u7532\u706f\uff1b        bottom_back: \u540e\u88c5\u7532\u706f\uff1bbottom_left: \u5de6\u88c5\u7532\u706f\uff1bbottom_right: \u53f3\u88c5\u7532\u706f
+     |      :param r: int: [0~255]\uff0cRGB\u7ea2\u8272\u5206\u91cf\u503c
+     |      :param g: int: [0~255]\uff0cRGB\u7eff\u8272\u5206\u91cf\u503c
+     |      :param b: int: [0~255]\uff0cRGB\u84dd\u8272\u5206\u91cf\u503c
+     |      :param effect: enum: ("on", "off", "flash", "breath", "scrolling") \u706f\u6548\u7c7b\u578b\uff0con:\u5e38\u4eae\uff1boff:\u5e38\u706d\uff1bflash:\u95ea\u70c1\uff1b        breath:\u547c\u5438\uff1bscrolling:\u8dd1\u9a6c\u706f\uff08\u4ec5\u5bf9\u4e91\u53f0\u706f\u6709\u6548\uff09
+     |      :param freq: int: [1, 10]\uff0c\u95ea\u70c1\u9891\u7387\uff0c\u4ec5\u5bf9\u95ea\u70c1\u706f\u6548\u6709\u6548
+     |      :return: bool:\u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    COMP_ALL = 'all'
+    COMP_BOTTOM_ALL = 'bottom_all'
+    COMP_BOTTOM_BACK = 'bottom_back'
+    COMP_BOTTOM_FRONT = 'bottom_front'
+    COMP_BOTTOM_LEFT = 'bottom_left'
+    COMP_BOTTOM_RIGHT = 'bottom_right'
+    COMP_TOP_ALL = 'top_all'
+    COMP_TOP_LEFT = 'top_left'
+    COMP_TOP_RIGHT = 'top_right'
+    EFFECT_BREATH = 'breath'
+    EFFECT_FLASH = 'flash'
+    EFFECT_OFF = 'off'
+    EFFECT_ON = 'on'
+    EFFECT_PULSE = 'pulse'
+    EFFECT_SCROLLING = 'scrolling'
+    __all__ = ['Led', 'COMP_TOP_LEFT', 'COMP_TOP_RIGHT', 'COMP_BOTTOM_LEFT...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\led.py
+
+
+None
+Help on module robomaster.media in robomaster:
+
+NAME
+    robomaster.media
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        LiveView
+    
+    class LiveView(builtins.object)
+     |  LiveView(robot)
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  read_audio_frame(self, timeout=1)
+     |  
+     |  read_video_frame(self, timeout=3, strategy='pipeline')
+     |  
+     |  start_audio_stream(self, addr=None, ip_proto='tcp')
+     |  
+     |  start_video_stream(self, display=True, addr=None, ip_proto='tcp')
+     |  
+     |  stop(self)
+     |  
+     |  stop_audio_stream(self)
+     |  
+     |  stop_video_stream(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    logger = <Logger sdk (ERROR)>
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\media.py
+
+
+None
+Help on module robomaster.module in robomaster:
+
+NAME
+    robomaster.module
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        Module
+    
+    class Module(builtins.object)
+     |  Module(robot)
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Module']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\module.py
+
+
+None
+Help on module robomaster.protocol in robomaster:
+
+NAME
+    robomaster.protocol
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    MsgBase(builtins.object)
+        Msg
+        TextMsg
+    
+    class Msg(MsgBase)
+     |  Msg(sender=0, receiver=0, proto=None)
+     |  
+     |  Method resolution order:
+     |      Msg
+     |      MsgBase
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, sender=0, receiver=0, proto=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  get_proto(self)
+     |  
+     |  pack(self, is_ack=False)
+     |      Msg \u6d88\u606f\u6253\u5305
+     |      
+     |      :param is_ack: bool: \u662f\u5426\u662fack\u6d88\u606f
+     |      :return: bytearray\uff0c\u6d88\u606f\u5b57\u8282\u6d41
+     |  
+     |  unpack_protocol(self)
+     |      \u4ece\u81ea\u8eab\u7684buf\u6570\u636e\u89e3\u7801\u534f\u8bae\u53ca\u534f\u8bae\u5185\u5bb9\u3002
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  cmdid
+     |  
+     |  cmdset
+     |  
+     |  is_ack
+     |  
+     |  receiver
+     |  
+     |  sender
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from MsgBase:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class TextMsg(MsgBase)
+     |  TextMsg(proto=None)
+     |  
+     |  Method resolution order:
+     |      TextMsg
+     |      MsgBase
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, proto=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  get_buf(self)
+     |  
+     |  get_proto(self)
+     |  
+     |  pack(self)
+     |  
+     |  unpack_protocol(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  IS_DDS_FLAG = ';mpry:'
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from MsgBase:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Msg', 'TextMsg']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\protocol.py
+
+
+None
+Help on module robomaster.robot in robomaster:
+
+NAME
+    robomaster.robot
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.action.Action(builtins.object)
+        RobotPlaySoundAction
+    RobotBase(builtins.object)
+        Drone
+        Robot
+    
+    class Drone(RobotBase)
+     |  Drone(cli=None)
+     |  
+     |  \u6559\u80b2\u7cfb\u5217\u65e0\u4eba\u673a
+     |  
+     |  Method resolution order:
+     |      Drone
+     |      RobotBase
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, cli=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  close(self)
+     |      \u505c\u6b62drone\u5bf9\u8c61
+     |  
+     |  config_sta(self, ssid, password)
+     |      \u8bbe\u7f6e\u98de\u673a\u7684\u8fde\u63a5\u6a21\u5f0f\u4e3a\u7ec4\u7f51\u6a21\u5f0f
+     |      
+     |      :param ssid: \u8def\u7531\u5668\u7684\u8d26\u53f7
+     |      :param password: \u8def\u7531\u5668\u7684\u5bc6\u7801
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  get_acceleration(self)
+     |      \u83b7\u53d6\u98de\u673a\u4e09\u8f74\u52a0\u901f\u5ea6\u503c
+     |      
+     |      :return: dict: \u98de\u673a\u4e09\u8f74\u52a0\u901f\u5ea6\u503c
+     |  
+     |  get_attitude(self)
+     |      \u83b7\u53d6\u98de\u673a\u4e09\u8f74\u59ff\u6001\u4fe1\u606f
+     |      
+     |      :return: dict: \u98de\u673a\u4e09\u8f74\u59ff\u6001\u4fe1\u606f
+     |  
+     |  get_baro(self)
+     |      \u83b7\u53d6\u7535\u673a\u6c14\u538b\u8ba1\u9ad8\u5ea6
+     |      
+     |      :return: float: \u7535\u673a\u6c14\u538b\u8ba1\u9ad8\u5ea6
+     |  
+     |  get_drone_version(self)
+     |      \u83b7\u53d6\u98de\u673a\u56fa\u4ef6\u7248\u672c\u53f7
+     |      
+     |      :return: string: \u7248\u672c\u53f7
+     |  
+     |  get_esp32_version(self)
+     |      \u83b7\u53d6esp32\u7248\u672c\u53f7
+     |      
+     |      :return: string: \u7248\u672c\u53f7
+     |  
+     |  get_hardware(self)
+     |      \u83b7\u53d6\u98de\u673a\u786c\u4ef6\u4fe1\u606f
+     |      \u672c\u547d\u4ee4\u4ec5\u652f\u6301SDK\u7248\u672c\u53f7>=30
+     |      \u53ef\u901a\u8fc7hardware?\u6307\u4ee4\u67e5\u8be2\u662f\u5426\u6709\u63a5WIFI\u62d3\u5c55\u6a21\u5757\uff0c\u6ca1\u63a5\u62d3\u5c55\u6a21\u5757\u8fd4\u56deTELLO\uff0c\u63a5\u4e86\u62d3\u5c55\u6a21\u5757\u8fd4\u56deRMTT\u3002
+     |      
+     |      :return: string: \u786c\u4ef6\u4fe1\u606f
+     |  
+     |  get_height(self)
+     |      \u83b7\u53d6\u98de\u673a\u76f8\u5bf9\u9ad8\u5ea6
+     |      
+     |      :return: string: \u98de\u673a\u76f8\u5bf9\u9ad8\u5ea6
+     |  
+     |  get_module(self, name)
+     |  
+     |  get_motor_time(self)
+     |      \u83b7\u53d6\u7535\u673a\u8fd0\u884c\u65f6\u95f4
+     |      
+     |      :return: string: \u7535\u673a\u7684\u8fd0\u884c\u65f6\u95f4
+     |  
+     |  get_sdk_version(self)
+     |      \u83b7\u53d6SDK\u7248\u672c\u53f7
+     |      
+     |      :return: string: \u7248\u672c\u53f7
+     |  
+     |  get_sn(self)
+     |      \u83b7\u53d6\u98de\u673asn\u53f7
+     |      
+     |      :return: string: \u98de\u673a\u7684SN\u53f7
+     |  
+     |  get_ssid(self)
+     |      \u83b7\u53d6SSID\u540d\u79f0
+     |      
+     |      :return: string: ssid\u540d\u79f0
+     |  
+     |  get_status(self, name)
+     |      \u83b7\u53d6\u98de\u673a\u6307\u5b9a\u7684\u72b6\u6001
+     |      
+     |      :param name: string:\u9700\u8981\u83b7\u53d6\u7684\u72b6\u6001\u540d\uff0c\u53ef\u5217\u8868["MID", "x", "y", "z", "mpry", "pitch", "roll", "yaw", "vgx", "vgy",
+     |                          "vgz", "templ", "temph", "tof", "h", "bat", "baro", "time", "agx", "agy", "agz"]\uff0c\u8be6\u7ec6\u4ecb\u7ecd
+     |                          \u53c2\u8003SDK\u4f7f\u7528\u6587\u6863
+     |      :return: name\u5bf9\u5e94\u72b6\u6001\u7684\u6570\u636e\u503c\uff0cDDS_PAD_MPRY_FLAG \u5bf9\u5e94\u72b6\u6001\u7684\u8fd4\u56de\u503c\u4e3a\u957f\u5ea6\u4e3a3\u7684list\uff0c\u5206\u522b\u4ee3\u8868\u7684\u5728\u98de\u673a\u76f8\u5bf9\u6311\u6218\u5361\u7684pitch\u3001yaw\u3001row\u503c\uff0c
+     |               \u5176\u4ed6\u72b6\u6001\u8fd4\u56de\u7684\u90fd\u662ffloat\u6570\u636e
+     |  
+     |  get_subnets(self)
+     |      Look through the machine's internet connection and
+     |      returns subnet addresses and server ip
+     |      :return: list[str]: subnets
+     |               list[str]: addr_list
+     |  
+     |  get_temp(self)
+     |      \u83b7\u53d6\u98de\u673a\u673a\u8eab\u6e29\u5ea6
+     |      
+     |      :return: dict: \u98de\u673a\u673a\u8eab\u6e29\u5ea6
+     |  
+     |  get_wifi(self)
+     |      \u83b7\u53d6wifi\u4fe1\u566a\u6bd4
+     |      
+     |      :return: float: wifi\u7684\u4fe1\u566a\u6bd4\u6570\u503c
+     |  
+     |  get_wifi_version(self)
+     |      \u83b7\u53d6WIFI\u7248\u672c\u53f7
+     |      
+     |      :return: string: \u7248\u672c\u53f7
+     |  
+     |  initialize(self, conn_type='ap')
+     |  
+     |  scan_drone_robot(self)
+     |      Automatic scanning of robots in the network
+     |      
+     |      :param num:
+     |      :return:
+     |  
+     |  search_stop(self)
+     |  
+     |  send_command(self)
+     |  
+     |  set_wifichannel(self, channel)
+     |      \u8bbe\u7f6e\u98de\u673aWIFI\u4fe1\u9053
+     |      
+     |      :param channel: \u9700\u8981\u8bbe\u7f6e\u7684\u4fe1\u9053
+     |      :return: bool: \u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  start(self)
+     |  
+     |  sub_drone_info(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u98de\u673a\u9ad8\u5ea6\u3001\u6c14\u538b\u8ba1\u3001\u7535\u673a\u8fd0\u884c\u65f6\u95f4\u4fe1\u606f
+     |      
+     |      :param freq: \u8ba2\u9605\u6570\u636e\u7684\u9891\u7387, 1HZ, 5HZ, 10HZ
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u6389\u51fd\u6570
+     |      :param args: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :param kw: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :return: \u8fd4\u56de\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_temp(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u98de\u673a\u6e29\u5ea6\u4fe1\u606f
+     |      
+     |      :param freq: \u8ba2\u9605\u6570\u636e\u7684\u9891\u7387, 1HZ, 5HZ, 10HZ
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u6389\u51fd\u6570
+     |      :param args: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :param kw: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :return: \u8fd4\u56de\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  sub_tof(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u98de\u673atof\u4fe1\u606f
+     |      
+     |      :param freq: \u8ba2\u9605\u6570\u636e\u7684\u9891\u7387, 1HZ, 5HZ, 10HZ
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u6389\u51fd\u6570
+     |      :param args: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :param kw: \u56de\u8c03\u51fd\u6570\u53c2\u6570
+     |      :return: \u8fd4\u56de\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_drone_info(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u98de\u673a\u9ad8\u5ea6\u3001\u6c14\u538b\u8ba1\u3001\u7535\u673a\u8fd0\u884c\u65f6\u95f4\u4fe1\u606f
+     |      
+     |      :return: \u8fd4\u56de\u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_temp(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u6e29\u5ea6\u4fe1\u606f\u3002
+     |      
+     |      :return: \u8fd4\u56de\u53d6\u6d88\u8ba2\u9605\u7ed3\u679c\u3002
+     |  
+     |  unsub_tof(self)
+     |      \u53d6\u6d88\u8ba2\u9605tof\u4fe1\u606f
+     |      
+     |      :return: \u8fd4\u56de\u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  action_dispatcher
+     |  
+     |  battery
+     |  
+     |  camera
+     |  
+     |  conf
+     |  
+     |  dds
+     |  
+     |  flight
+     |  
+     |  led
+     |  
+     |  sensor
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from RobotBase:
+     |  
+     |  client
+     |  
+     |  product
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from RobotBase:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class Robot(RobotBase)
+     |  Robot(cli=None)
+     |  
+     |  RoboMaster EP \u673a\u7532\u5927\u5e08 \u673a\u5668\u4eba
+     |  
+     |  Method resolution order:
+     |      Robot
+     |      RobotBase
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, cli=None)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  close(self)
+     |  
+     |  get_module(self, name)
+     |      \u83b7\u53d6\u6a21\u5757\u5bf9\u8c61
+     |      
+     |      :param name: \u6a21\u5757\u540d\u79f0\uff0c\u5b57\u7b26\u4e32\uff0c\u5982\uff1achassis, gimbal, led, blaster, camera, battery, vision, etc.
+     |      :return: \u6a21\u5757\u5bf9\u8c61
+     |  
+     |  get_robot_mode(self)
+     |      \u83b7\u53d6\u673a\u5668\u4eba\u5de5\u4f5c\u6a21\u5f0f
+     |      
+     |      :return: \u81ea\u7531\u6a21\u5f0f\u8fd4\u56defree; \u5e95\u76d8\u8ddf\u968f\u4e91\u53f0\u6a21\u5f0f\u8fd4\u56degimbal_lead\uff1b\u4e91\u53f0\u8ddf\u968f\u5e95\u76d8\u6a21\u5f0f\u8fd4\u56dechassis_lead
+     |  
+     |  get_sn(self)
+     |      \u83b7\u53d6\u673a\u5668\u4eba\u786c\u4ef6SN\u4fe1\u606f
+     |      
+     |      :return: \u786c\u4ef6SN\u5b57\u7b26\u4e32\uff0c\u5982\uff1a"3JKDH2T0011000"
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u673a\u5668\u4eba\u56fa\u4ef6\u7248\u672c\u53f7\u4fe1\u606f
+     |      
+     |      :return: \u7248\u672c\u5b57\u7b26\u4e32\uff0c\u5982\uff1a"01.01.0305"
+     |  
+     |  initialize(self, conn_type='ap', proto_type='udp', sn=None)
+     |      \u521d\u59cb\u5316\u673a\u5668\u4eba
+     |      
+     |      :param conn_type: \u8fde\u63a5\u5efa\u7acb\u7c7b\u578b: ap\u8868\u793a\u4f7f\u7528\u70ed\u70b9\u76f4\u8fde\uff1bsta\u8868\u793a\u4f7f\u7528\u7ec4\u7f51\u8fde\u63a5\uff0crndis\u8868\u793a\u4f7f\u7528USB\u8fde\u63a5
+     |      :param proto_type: \u901a\u8baf\u65b9\u5f0f: tcp, udp
+     |      
+     |      \u6ce8\u610f\uff1a\u5982\u9700\u4fee\u6539\u9ed8\u8ba4\u8fde\u63a5\u65b9\u5f0f\uff0c\u53ef\u5728conf.py\u4e2d\u6307\u5b9aDEFAULT_CONN_TYPE
+     |  
+     |  play_audio(self, filename)
+     |      \u64ad\u653e\u672c\u5730\u97f3\u9891\u6587\u4ef6
+     |      
+     |      :param filename: \u64ad\u653e\u97f3\u6548\u7684\u6587\u4ef6\u540d\uff0c\u76ee\u524d\u4ec5\u652f\u6301\u5355\u901a\u9053\uff0c48KHz\u91c7\u6837\u7684wav\u683c\u5f0f\u6587\u4ef6
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  play_sound(self, sound_id, times=1)
+     |      \u64ad\u653e\u7cfb\u7edf\u97f3\u6548
+     |      
+     |      :param sound_id: \u7cfb\u7edf\u97f3\u6548ID\u503c
+     |      :param times: \u64ad\u653e\u6b21\u6570
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  reset(self)
+     |      \u91cd\u7f6e\u673a\u5668\u4eba\u5230\u521d\u59cb\u9ed8\u8ba4\u72b6\u6001
+     |  
+     |  reset_robot_mode(self)
+     |  
+     |  set_robot_mode(self, mode='gimbal_lead')
+     |      \u8bbe\u7f6e\u673a\u5668\u4eba\u5de5\u4f5c\u6a21\u5f0f
+     |      
+     |      :param mode: \u673a\u5668\u4eba\u5de5\u4f5c\u6a21\u5f0f: free\u8868\u793a\u81ea\u7531\u6a21\u5f0f\uff1bchassis_lead\u8868\u793a\u4e91\u53f0\u8ddf\u968f\u5e95\u76d8\u6a21\u5f0f\uff1bgimbal_lead\u8868\u793a\u5e95\u76d8\u8ddf\u968f\u4e91\u53f0\u6a21\u5f0f
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  action_dispatcher
+     |  
+     |  armor
+     |  
+     |  battery
+     |      \u83b7\u53d6\u7535\u6c60\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  blaster
+     |      \u83b7\u53d6\u6c34\u5f39\u67aa\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  camera
+     |      \u83b7\u53d6\u76f8\u673a\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  chassis
+     |      \u83b7\u53d6\u5e95\u76d8\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  conf
+     |  
+     |  conn_type
+     |  
+     |  dds
+     |  
+     |  gimbal
+     |      \u83b7\u53d6\u4e91\u53f0\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  gripper
+     |  
+     |  ip
+     |  
+     |  is_initialized
+     |  
+     |  led
+     |      \u83b7\u53d6\u706f\u6548\u63a7\u5236\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  proto_type
+     |  
+     |  robotic_arm
+     |      \u83b7\u53d6\u673a\u68b0\u81c2\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  sensor
+     |  
+     |  sensor_adaptor
+     |  
+     |  servo
+     |  
+     |  uart
+     |  
+     |  vision
+     |      \u83b7\u53d6\u667a\u80fd\u8bc6\u522b\u6a21\u5757\u5bf9\u8c61
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from RobotBase:
+     |  
+     |  client
+     |  
+     |  product
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from RobotBase:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class RobotPlaySoundAction(robomaster.action.Action)
+     |  RobotPlaySoundAction(sound_id, times, **kw)
+     |  
+     |  Method resolution order:
+     |      RobotPlaySoundAction
+     |      robomaster.action.Action
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, sound_id, times, **kw)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  encode(self)
+     |  
+     |  update_from_push(self, proto)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.action.Action:
+     |  
+     |  found_action(self, proto)
+     |  
+     |  found_proto(self, proto)
+     |  
+     |  make_action_key(self)
+     |  
+     |  wait_for_completed(self, timeout=None)
+     |      \u7b49\u5f85\u4efb\u52a1\u52a8\u4f5c\u76f4\u5230\u5b8c\u6210
+     |      
+     |      :param timeout: \u8d85\u65f6\uff0c\u5728timeout\u524d\u672a\u5b8c\u6210\u4efb\u52a1\u52a8\u4f5c\uff0c\u76f4\u63a5\u8fd4\u56de
+     |      :return: bool: \u52a8\u4f5c\u5728\u6307\u5b9a\u65f6\u95f4\u5185\u5b8c\u6210\uff0c\u8fd4\u56deTrue; \u52a8\u4f5c\u8d85\u65f6\u8fd4\u56deFalse
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.action.Action:
+     |  
+     |  failure_reason
+     |      \u83b7\u53d6\u6267\u884c\u5931\u8d25\u539f\u56e0
+     |  
+     |  has_failed
+     |      \u662f\u5426\u5df2\u7ecf\u6267\u884c\u5931\u8d25
+     |  
+     |  has_succeeded
+     |      \u662f\u5426\u5df2\u7ecf\u6210\u529f\u5b8c\u6210
+     |  
+     |  is_completed
+     |  
+     |  is_running
+     |      \u662f\u5426\u6b63\u5728\u8fd0\u884c\u4e2d\u3002
+     |  
+     |  state
+     |      \u8fd4\u56de\u5f53\u524d\u4efb\u52a1\u52a8\u4f5c\u72b6\u6001\u3002
+     |  
+     |  target
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.action.Action:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    CHASSIS_LEAD = 'chassis_lead'
+    FREE = 'free'
+    GIMBAL_LEAD = 'gimbal_lead'
+    SOUND_ID_ATTACK = 257
+    SOUND_ID_COUNT_DOWN = 262
+    SOUND_ID_GIMBAL_MOVE = 261
+    SOUND_ID_RECOGNIZED = 260
+    SOUND_ID_SCANNING = 259
+    SOUND_ID_SHOOT = 258
+    __all__ = ['Robot', 'RobotPlaySoundAction', 'Drone', 'FREE', 'GIMBAL_L...
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\robot.py
+
+
+None
+Help on module robomaster.robotic_arm in robomaster:
+
+NAME
+    robomaster.robotic_arm
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        RoboticArm
+    
+    class RoboticArm(robomaster.module.Module)
+     |  RoboticArm(robot)
+     |  
+     |  EP \u673a\u68b0\u81c2 \u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      RoboticArm
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  move(self, x=0, y=0)
+     |      \u673a\u68b0\u81c2\u76f8\u5bf9\u4f4d\u7f6e\u79fb\u52a8
+     |      
+     |      :param x: float, x\u8f74\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5411\u524d\u79fb\u52a8\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d mm
+     |      :param y: float, y\u8f74\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5411\u4e0a\u79fb\u52a8\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d mm
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  moveto(self, x=0, y=0)
+     |      \u673a\u68b0\u81c2\u7edd\u5bf9\u4f4d\u7f6e\u79fb\u52a8
+     |      
+     |      :param x: float, x\u8f74\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5411\u524d\u79fb\u52a8\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d mm
+     |      :param y: float, y\u8f74\u8fd0\u52a8\u8ddd\u79bb\uff0c\u5411\u4e0a\u79fb\u52a8\u4e3a\u6b63\u65b9\u5411\uff0c\u5355\u4f4d mm
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  recenter(self)
+     |      \u63a7\u5236\u673a\u68b0\u81c2\u56de\u4e2d
+     |      
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  reset(self)
+     |  
+     |  sub_position(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u673a\u68b0\u81c2\u7684\u4f4d\u7f6e\u4fe1\u606f
+     |      
+     |      :param freq: enum:(1,5,10,20,50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (pos_x, pos_y)\uff1a
+     |      
+     |                      :pos_x: \u673a\u68b0\u81c2x\u8f74\u4f4d\u7f6e\u4fe1\u606f
+     |                      :pos_y: \u673a\u68b0\u81c2y\u8f74\u4f4d\u7f6e\u4fe1\u606f
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_position(self)
+     |      \u53d6\u6d88\u673a\u68b0\u81c2\u4f4d\u7f6e\u4fe1\u606f\u8ba2\u9605
+     |      
+     |      :return: bool: \u53d6\u6d88\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['RoboticArm']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\robotic_arm.py
+
+
+None
+Help on module robomaster.sensor in robomaster:
+
+NAME
+    robomaster.sensor
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        DistanceSensor
+        SensorAdaptor
+    
+    class DistanceSensor(robomaster.module.Module)
+     |  DistanceSensor(robot)
+     |  
+     |  EP \u8ddd\u79bb\u4f20\u611f\u5668\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      DistanceSensor
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  sub_distance(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u8ddd\u79bb\u4f20\u611f\u5668\u6d4b\u91cf\u7684\u8ddd\u79bb\u4fe1\u606f
+     |      
+     |      :param freq: \u8ba2\u9605\u6570\u636e\u7684\u9891\u7387\uff0c\u652f\u6301\u7684\u8ba2\u9605\u9891\u7387\u4e3a1\u30015\u300110\u300120\u300150hz
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u8c03\u51fd\u6570\uff0c\u56de\u8c03\u51fd\u6570\u7684\u53c2\u6570\u4e3a\uff1a
+     |      
+     |                      :distance[4]: 4\u4e2atof\u7684\u8ddd\u79bb\u4fe1\u606f
+     |      
+     |      :param args: \u4f20\u5165\u53c2\u6570\u3002
+     |      :return: \u8fd4\u56de\u8ba2\u9605\u7ed3\u679c\u3002
+     |  
+     |  unsub_distance(self)
+     |      \u53d6\u6d88\u8ddd\u79bb\u4f20\u611f\u5668\u7684\u4fe1\u606f\u8ba2\u9605\u3002
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+    
+    class SensorAdaptor(robomaster.module.Module)
+     |  SensorAdaptor(robot)
+     |  
+     |  EP \u4f20\u611f\u5668\u677f\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      SensorAdaptor
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  get_adc(self, id=1, port=1)
+     |      \u4f20\u611f\u5668\u677fadc\u503c\u83b7\u53d6
+     |      
+     |      :param id: int[1,8]\uff0c\u4f20\u611f\u5668\u677f\u7f16\u53f7
+     |      :param port: int:[1,2]\uff0c\u4f20\u611f\u5668\u677f\u7aef\u53e3\u53f7
+     |      :return: adc\u503c
+     |  
+     |  get_io(self, id=1, port=1)
+     |      \u4f20\u611f\u5668\u677fio\u7535\u5e73\u503c\u83b7\u53d6
+     |      
+     |      :param id: int[1,8], \u4f20\u611f\u5668\u677f\u7f16\u53f7
+     |      :param port: int:[1,2], \u4f20\u611f\u5668\u677f\u7aef\u53e3\u53f7
+     |      :return: io\u7535\u5e73\u503c
+     |  
+     |  get_pulse_period(self, id=1, port=1)
+     |      \u4f20\u611f\u5668\u677f\u7535\u5e73\u6301\u7eed\u65f6\u95f4\u83b7\u53d6
+     |      
+     |      :param id: int[1,8], \u4f20\u611f\u5668\u677f\u7f16\u53f7
+     |      :param port: int:[1,2], \u4f20\u611f\u5668\u677f\u7aef\u53e3\u53f7
+     |      :return: \u7535\u5e73\u6301\u7eed\u65f6\u95f4,\u5355\u4f4dms
+     |  
+     |  sub_adapter(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u4f20\u611f\u5668\u8f6c\u63a5\u677f\u4fe1\u606f
+     |      
+     |      :param freq: \u8ba2\u9605\u6570\u636e\u7684\u9891\u7387\uff0c\u652f\u6301\u7684\u8ba2\u9605\u9891\u7387\u4e3a1\u30015\u300110\u300120\u300150hz
+     |      :param callback: \u4f20\u5165\u6570\u636e\u5904\u7406\u7684\u56de\u8c03\u51fd\u6570\uff0c\u56de\u8c03\u51fd\u6570\u7684\u53c2\u6570\u4e3a\uff1a
+     |      
+     |                      :adapter[6]: 6\u4e2aadapter\u7684io/ad\u4fe1\u606f
+     |      
+     |      :param args: \u4f20\u5165\u53c2\u6570\u3002
+     |      :return: \u8fd4\u56de\u8ba2\u9605\u7ed3\u679c\u3002
+     |  
+     |  unsub_adapter(self)
+     |      \u53d6\u6d88\u4f20\u611f\u5668\u8f6c\u63a5\u677f\u7684\u4fe1\u606f\u8ba2\u9605\u3002
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['DistanceSensor', 'SensorAdaptor']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\sensor.py
+
+
+None
+Help on module robomaster.servo in robomaster:
+
+NAME
+    robomaster.servo
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Servo
+    
+    class Servo(robomaster.module.Module)
+     |  Servo(robot)
+     |  
+     |  EP \u8235\u673a\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Servo
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  drive_speed(self, index=0, speed=0)
+     |  
+     |  get_angle(self, index=1)
+     |      \u83b7\u53d6\u8235\u673a\u89d2\u5ea6\u503c
+     |      
+     |      :param index: int: [1\uff0c3]\uff0c\u8235\u673a\u7f16\u53f7
+     |      :return: int \u8235\u673a\u89d2\u5ea6
+     |  
+     |  moveto(self, index=0, angle=0)
+     |      \u8235\u673a\u7edd\u5bf9\u4f4d\u7f6e\u79fb\u52a8
+     |      
+     |      :param index: int [1, 3]\uff0c\u8235\u673a\u7f16\u53f7
+     |      :param angle: int: [-180, 180]\uff0c\u8235\u673a\u65cb\u8f6c\u89d2\u5ea6\uff0c\u5355\u4f4d\uff08°\uff09
+     |      :return: action\u5bf9\u8c61
+     |  
+     |  pause(self, index=0)
+     |      \u505c\u6b62
+     |      
+     |      :param index: int: [1, 3]\uff0c\u8235\u673a\u7f16\u53f7
+     |      :return bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  sub_servo_info(self, freq=5, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u8235\u673a\u89d2\u5ea6\u4fe1\u606f
+     |      
+     |      :param freq: enum: (1, 5, 10, 20, 50) \u8bbe\u7f6e\u6570\u636e\u8ba2\u9605\u6570\u636e\u7684\u63a8\u9001\u9891\u7387\uff0c\u5355\u4f4d Hz
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (valid[4], speed[4], angle[4]):
+     |      
+     |                      :valid[4]: 4\u4e2a\u8235\u673a\u5728\u7ebf\u72b6\u6001
+     |                      :speed[4]: 4\u4e2a\u8235\u673a\u7684\u901f\u5ea6\u503c
+     |                      :angle[4]: 4\u4e2a\u8235\u673a\u7684\u89d2\u5ea6\u503c
+     |      
+     |      :param args: \u53ef\u53d8\u53c2\u6570
+     |      :param kw: \u5173\u952e\u5b57\u53c2\u6570
+     |      :return: bool: \u6570\u636e\u8ba2\u9605\u7ed3\u679c
+     |  
+     |  unsub_servo_info(self)
+     |      \u53d6\u6d88\u8ba2\u9605\u8235\u673a\u7684\u89d2\u5ea6\u4fe1\u606f
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Servo']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\servo.py
+
+
+None
+Help on module robomaster.uart in robomaster:
+
+NAME
+    robomaster.uart
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Uart
+    
+    class Uart(robomaster.module.Module)
+     |  Uart(robot)
+     |  
+     |  EP \u4e32\u53e3\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Uart
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __del__(self)
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  serial_param_set(self, baud_rate=0, data_bit=1, odd_even=0, stop_bit=0, rx_en=1, tx_en=1, rx_size=50, tx_size=50)
+     |      \u5e95\u76d8\u4e32\u53e3\u53c2\u6570\u8bbe\u7f6e
+     |      
+     |      \u9ed8\u8ba4\u8bbe\u7f6e\uff1a'9600', 'bit8', 'none', '1'
+     |      
+     |      :param baud_rate: \u4e32\u53e3\u6ce2\u7279\u7387\uff0c\u8bbe\u7f6e\u8303\u56f4\uff1a0~4\u6620\u5c04‘9600’\uff0c‘19200’\uff0c‘38400’\uff0c‘57600’\uff0c‘115200’
+     |      :param data_bit:  \u6570\u636e\u4f4d\u8bbe\u7f6e\uff0c\u8bbe\u7f6e\u8303\u56f4\uff1a0~3\u6620\u5c04‘bit7’, 'bit8', 'bit9', 'bit10'
+     |      :param odd_even:  \u6570\u636e\u6821\u9a8c\u4f4d\uff0c\u8bbe\u7f6e\u8303\u56f4\uff1a0~3\u6620\u5c04‘none’, 'odd', 'even'
+     |      :param stop_bit:  \u505c\u6b62\u4f4d\uff0c\u8bbe\u7f6e\u8303\u56f4\uff1a1~2
+     |      :param rx_en: \u63a5\u6536\u4f7f\u80fd
+     |      :param tx_en: \u53d1\u9001\u4f7f\u80fd
+     |      :param rx_size: \u63a5\u6536buff\u5927\u5c0f
+     |      :param tx_size: \u53d1\u9001buff\u5927\u5c0f
+     |      :return: \u8fd4\u56de\u4e32\u53e3\u8bbe\u7f6e\u7ed3\u679c
+     |  
+     |  serial_process_decode(self, msg)
+     |  
+     |  serial_process_exec(self)
+     |  
+     |  serial_read_data(self, msg_len)
+     |  
+     |  serial_send_msg(self, msg_buf)
+     |      \u5e95\u76d8\u4e32\u53e3\u6570\u636e\u6570\u636e\u53d1\u9001
+     |      
+     |      :param msg_buf: \u53d1\u9001\u7684\u6570\u636e
+     |      :param msg_len: \u53d1\u9001\u7684\u6570\u636e\u957f\u5ea6
+     |      :return: \u8fd4\u56de\u4e32\u53e3\u6570\u636e\u53d1\u9001\u7ed3\u679c
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  sub_serial_msg(self, callback=None, *args)
+     |  
+     |  unsub_serial_msg(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  reset(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    __all__ = ['Uart']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\uart.py
+
+
+None
+Help on module robomaster.util in robomaster:
+
+NAME
+    robomaster.util
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    builtins.object
+        UnitChecker
+    
+    class UnitChecker(builtins.object)
+     |  UnitChecker(name, default=0, start=0, end=0, step=1, decimal=2, scale=1, unit='Unit Metric')
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, name, default=0, start=0, end=0, step=1, decimal=2, scale=1, unit='Unit Metric')
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  check(self, value)
+     |  
+     |  proto2val(self, val)
+     |  
+     |  val2proto(self, val)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties defined here:
+     |  
+     |  decimal
+     |  
+     |  default
+     |  
+     |  end
+     |  
+     |  name
+     |  
+     |  scale
+     |  
+     |  start
+     |  
+     |  step
+     |  
+     |  unit
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    CHASSIS_ACC_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_GYRO_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_PITCH_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_X_SET_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_X_SUB_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_Y_SET_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_Y_SUB_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_Z_SET_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_POS_Z_SUB_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_ROLL_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_SPD_X_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_SPD_Y_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_SPD_Z_CHECKER = <robomaster.util.UnitChecker object>
+    CHASSIS_YAW_CHECKER = <robomaster.util.UnitChecker object>
+    COLOR_VALUE_CHECKER = <robomaster.util.UnitChecker object>
+    FIRE_TIMES_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_ATTI_PITCH_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_ATTI_YAW_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_PITCH_MOVE_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_PITCH_MOVE_SPEED_SET_CHECKER = <robomaster.util.UnitChecker obj...
+    GIMBAL_PITCH_SPEED_SET_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_PITCH_TARGET_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_YAW_MOVE_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_YAW_MOVE_SPEED_SET_CHECKER = <robomaster.util.UnitChecker objec...
+    GIMBAL_YAW_SPEED_SET_CHECKER = <robomaster.util.UnitChecker object>
+    GIMBAL_YAW_TARGET_CHECKER = <robomaster.util.UnitChecker object>
+    GRIPPER_POWER_CHECK = <robomaster.util.UnitChecker object>
+    PWM_FREQ_CHECKER = <robomaster.util.UnitChecker object>
+    PWM_VALUE_CHECKER = <robomaster.util.UnitChecker object>
+    ROBOTIC_ARM_POS_CHECK = <robomaster.util.UnitChecker object>
+    UNIT_INCH = 'Unit Inch'
+    UNIT_METRIC = 'Unit Metric'
+    WHEEL_SPD_CHECKER = <robomaster.util.UnitChecker object>
+    logger = <Logger sdk (ERROR)>
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\util.py
+
+
+None
+Help on module robomaster.version in robomaster:
+
+NAME
+    robomaster.version
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+DATA
+    SDK_VERSION_BUILD = 65
+    SDK_VERSION_MAJOR = 0
+    SDK_VERSION_MINOR = 1
+    SDK_VERSION_REVISION = 1
+
+VERSION
+    0.1.1.65
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\version.py
+
+
+None
+Help on module robomaster.vision in robomaster:
+
+NAME
+    robomaster.vision
+
+DESCRIPTION
+    # -*-coding:utf-8-*-
+    # Copyright (c) 2020 DJI.
+    #
+    # Licensed under the Apache License, Version 2.0 (the "License");
+    # you may not use this file except in compliance with the License.
+    # You may obtain a copy of the License in the file LICENSE.txt or at
+    #
+    #     http://www.apache.org/licenses/LICENSE-2.0
+    #
+    # Unless required by applicable law or agreed to in writing, software
+    # distributed under the License is distributed on an "AS IS" BASIS,
+    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    # See the License for the specific language governing permissions and
+    # limitations under the License.
+
+CLASSES
+    robomaster.module.Module(builtins.object)
+        Vision
+    
+    class Vision(robomaster.module.Module)
+     |  Vision(robot)
+     |  
+     |  EP \u89c6\u89c9\u8bc6\u522b\u6a21\u5757
+     |  
+     |  Method resolution order:
+     |      Vision
+     |      robomaster.module.Module
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, robot)
+     |      Initialize self.  See help(type(self)) for accurate signature.
+     |  
+     |  reset(self)
+     |  
+     |  sub_detect_info(self, name, color=None, callback=None, *args, **kw)
+     |      \u8ba2\u9605\u667a\u80fd\u8bc6\u522b\u6d88\u606f
+     |      
+     |      :param name: enum: ("person", "gesture", "line", "marker", "robot")\uff0cperson \u884c\u4eba\uff0cgesture \u624b\u52bf\uff0cline \u7ebf\u8bc6\u522b\uff0c        marker \u6807\u7b7e\u8bc6\u522b\uff0crobot \u673a\u5668\u4eba\u8bc6\u522b
+     |      :param color: enum:("red", "green", "blue"): \u6307\u5b9a\u8bc6\u522b\u989c\u8272\uff0c\u4ec5\u7ebf\u8bc6\u522b\u548c\u6807\u7b7e\u8bc6\u522b\u65f6\u751f\u6548
+     |      :param callback: \u56de\u8c03\u51fd\u6570\uff0c\u8fd4\u56de\u6570\u636e (list(rect_info)):
+     |      
+     |          :rect_info: \u5305\u542b\u7684\u4fe1\u606f\u5982\u4e0b\uff1a
+     |                  person \u884c\u4eba\u8bc6\u522b\uff1a(x, y, w, h), x \u4e2d\u5fc3\u70b9x\u8f74\u5750\u6807\uff0cy \u4e2d\u5fc3\u70b9y\u8f74\u5750\u6807\uff0cw \u5bbd\u5ea6\uff0ch \u9ad8\u5ea6
+     |                  gesture \u624b\u52bf\u8bc6\u522b\uff1a(x, y, w, h), x \u4e2d\u5fc3\u70b9x\u8f74\u5750\u6807\uff0cy \u4e2d\u5fc3\u70b9y\u8f74\u5750\u6807\uff0cw \u5bbd\u5ea6\uff0ch \u9ad8\u5ea6
+     |                  line \u7ebf\u8bc6\u522b\uff1a(x, y, theta, C)\uff0cx\u70b9x\u8f74\u5750\u6807\uff0cy\u70b9y\u8f74\u5750\u6807\uff0ctheta\u5207\u7ebf\u89d2\uff0cC \u66f2\u7387
+     |                  marker \u8bc6\u522b\uff1a(x, y, w, h, marker), x \u4e2d\u5fc3\u70b9x\u8f74\u5750\u6807\uff0cy \u4e2d\u5fc3\u70b9y\u8f74\u5750\u6807\uff0cw \u5bbd\u5ea6\uff0ch \u9ad8\u5ea6\uff0cmarker \u8bc6\u522b\u5230\u7684\u6807\u7b7e
+     |                  robot \u673a\u5668\u4eba\u8bc6\u522b\uff1a(x, y, w, h)\uff0cx \u4e2d\u5fc3\u70b9x\u8f74\u5750\u6807\uff0cy \u4e2d\u5fc3\u70b9y\u8f74\u5750\u6807\uff0cw \u5bbd\u5ea6\uff0ch \u9ad8\u5ea6
+     |  
+     |  unsub_detect_info(self, name)
+     |      \u53d6\u6d88\u667a\u80fd\u8ba2\u9605\u6d88\u606f
+     |      
+     |      :param name: enum: ("person", "gesture", "line", "marker", "robot")\uff0c\u53d6\u6d88\u7684\u667a\u80fd\u8bc6\u522b\u529f\u80fd
+     |      :return: bool: \u8c03\u7528\u7ed3\u679c
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from robomaster.module.Module:
+     |  
+     |  get_version(self)
+     |      \u83b7\u53d6\u6a21\u5757\u7248\u672c\u53f7
+     |      
+     |      :return\uff1a\u5b57\u7b26\u4e32\uff0c\u683c\u5f0f\u4e3a\uff1aAA.BB.CC.DD
+     |  
+     |  start(self)
+     |  
+     |  stop(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Readonly properties inherited from robomaster.module.Module:
+     |  
+     |  client
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from robomaster.module.Module:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    GESTURE = 'gesture'
+    LINE = 'line'
+    MARKER = 'marker'
+    PERSON = 'person'
+    ROBOT = 'robot'
+    __all__ = ['Vision', 'PERSON', 'GESTURE', 'LINE', 'MARKER', 'ROBOT']
+
+FILE
+    c:\users\joe vetere\appdata\local\programs\python\python38\lib\site-packages\robomaster\vision.py
+
+
+None
